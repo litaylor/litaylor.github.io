@@ -1,5 +1,22 @@
 <html>
+
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://www.appelsiini.net/projects/lazyload/jquery.lazyload.js?v=1.9.1"></script>
+  <script type="text/javascript" charset="utf-8">
+  $(function() {
+     $("img.lazy").lazyload({
+         effect : "fadeIn"
+     });
+  });
+  </script>
+</head>
+
+<img class="lazy img-responsive" data-original="http://upload.wikimedia.org/wikipedia/commons/4/45/Manny_Machado_8-10-2012.jpg" alt="BMW M1 Side"><br/>
+
 <body>
-words
+
+
+
 </body>
 </html>
