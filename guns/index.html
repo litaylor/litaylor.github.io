@@ -11,6 +11,11 @@
 <script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>
 <script>
   $(function() {
+  	Highcharts.setOptions({
+		lang: {
+			thousandsSep: ','
+		}
+	});
       $('#container1').highcharts({
         chart: {
           type: 'area'
