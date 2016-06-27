@@ -1,0 +1,255 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>
+<script>
+  $(function() {
+      $('#container1').highcharts({
+        chart: {
+          type: 'area'
+        },
+        title: {
+          text: 'Registered background checks in June'
+        },
+        subtitle: {
+          text: '2012-2016'
+        },
+        xAxis: {
+          type: 'datetime'
+        },
+        yAxis: {
+          title: {
+            text: null
+          }
+        },
+        tooltip: {
+          pointFormat: '{series.name} background checks <b>{point.y:,.0f}</b><br/>on {point.x}'
+        }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
+        plotOptions: {
+          area: {
+            pointStart: Date.UTC(2012, 5, 1),
+            pointInterval: 24 * 3600 * 1000,
+            marker: {
+              enabled: false,
+              symbol: 'circle',
+              radius: 2,
+              states: {
+                hover: {
+                  enabled: true
+                }
+              }
+            }
+          }
+        },
+        series: [{
+            name: '2012',
+            data: [
+              [2774],
+              [1176],
+              [1789],
+              [1741],
+              [1719],
+              [1734],
+              [2145],
+              [2317],
+              [886],
+              [1485],
+              [1655],
+              [1549],
+              [1875],
+              [2277],
+              [2499],
+              [955],
+              [1439],
+              [1529],
+              [1519],
+              [1651],
+              [2000],
+              [2522],
+              [991],
+              [1619],
+              [1526],
+              [1545],
+              [1657],
+              [2205],
+              [1831]
+            ],
+            color: '#084141'
+          },
+
+          {
+            name: '2013',
+            data: [
+
+              [1140],
+              [1948],
+              [1791],
+              [1808],
+              [2013],
+              [2276],
+              [2938],
+              [1104],
+              [1697],
+              [1749],
+              [1777],
+              [1912],
+              [2275],
+              [2774],
+              [1048],
+              [1671],
+              [1588],
+              [1696],
+              [1712],
+              [2146],
+              [2518],
+              [984],
+              [1574],
+              [1585],
+              [1531],
+              [1672],
+              [2186],
+              [2543],
+              [983]
+
+            ],
+            color: '#005958'
+          },
+
+          {
+            name: '2014',
+            data: [
+              [1649],
+              [1944],
+              [1830],
+              [1818],
+              [2240],
+              [2786],
+              [1282],
+              [1779],
+              [1672],
+              [1764],
+              [2055],
+              [2556],
+              [2539],
+              [870],
+              [1575],
+              [1554],
+              [1688],
+              [1774],
+              [2074],
+              [2325],
+              [1009],
+              [1550],
+              [1591],
+              [1579],
+              [1638],
+              [2137],
+              [2217],
+              [825],
+              [1559]
+            ],
+            color: '#009090'
+          }, {
+            name: '2015',
+            data: [
+              [1847],
+              [1937],
+              [2088],
+              [2481],
+              [2721],
+              [1056],
+              [1790],
+              [1846],
+              [1822],
+              [2160],
+              [2463],
+              [2519],
+              [1029],
+              [1674],
+              [1760],
+              [1776],
+              [2184],
+              [2643],
+              [3020],
+              [1237],
+              [1753],
+              [1678],
+              [1789],
+              [1822],
+              [2331],
+              [2549],
+              [1071],
+              [1738],
+              [1907]
+            ],
+            color: '#08BCBD'
+          }, {
+            name: '2016',
+            data: [
+              [2103],
+              [2688],
+              [2878],
+              [1090],
+              [1988],
+              [1878],
+              [1890],
+              [2089],
+              [2403],
+              [3021],
+              [2219],
+              [3714],
+              [3921],
+              [3956],
+              [4640],
+              [5365],
+              [6045],
+              [2161]
+            ],
+            color: '#F05900'
+          }
+        ],
+
+
+				annotationsOptions: {
+            enabledButtons: false   
+        },
+        annotations: [{
+          title: {
+            text: '<div style="">Orlando shooting:<br />June 12, 2016</div>',
+            style: {
+              color: '#F05900',
+              backgroundColor: 'red',
+              paddingLeft: '5px'
+            },
+          },
+          anchorX: "left",
+          anchorY: "top",
+          allowDragX: true,
+          xValue: Date.UTC(2012, 5, 12),
+          yValue: 7000,
+          shape: {
+                type: 'path',
+                params: {
+                    d: ['M', 0, 5, 'L', 0, 80],
+                    stroke: '#F05900'
+                }
+            }
+          }]
+
+        });
+      });
+</script>
+
+</body>
+
+
+</html>
