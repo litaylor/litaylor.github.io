@@ -30,7 +30,8 @@
           }
         },
         tooltip: {
-          pointFormat: '{series.name} backgroundd checks <b>{point.y:,.0f}</b><br/>on {point.x}'
+        	headerFormat:'',
+        	pointFormat: '{series.name}: <b>{point.y:,.0f} background checks</b>'
         }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
         plotOptions: {
           area: {
