@@ -5,6 +5,7 @@
 <body>
 
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -262,6 +263,220 @@
 
         });
       });
+</script>
+<script>$(function() {
+  Highcharts.setOptions({
+    lang: {
+      thousandsSep: ','
+    }
+  });
+  $('#container2').highcharts({
+    chart: {
+      type: 'area'
+    },
+    title: {
+      text: 'Registered background checks in December'
+    },
+    subtitle: {
+      text: '2012-2016'
+    },
+    xAxis: {
+      type: 'datetime'
+    },
+    yAxis: {
+      title: {
+        text: null
+      }
+    },
+    tooltip: {
+      //headerFormat:'',
+      xDateFormat: '%B %d',
+      pointFormat: '{series.name}: <b>{point.y} </b>background checks</b>'
+    },
+    plotOptions: {
+      area: {
+        pointStart: Date.UTC(2012, 11, 1),
+        pointInterval: 24 * 3600 * 1000,
+        marker: {
+          enabled: false,
+          symbol: 'circle',
+          radius: 2,
+          states: {
+            hover: {
+              enabled: true
+            }
+          }
+        }
+      }
+    },
+    series: [{
+      name: '2012',
+      data: [
+        [2035],
+        [2841],
+        [2797],
+        [2791],
+        [2969],
+        [3776],
+        [4796],
+        [2155],
+        [2892],
+        [3019],
+        [3157],
+        [3388],
+        [4805],
+        [6945],
+        [3171],
+        [5735],
+        [7105],
+        [8250],
+        [8436],
+        [8730],
+        [7598],
+        [2524],
+        [4050],
+        [1],
+        [4292],
+        [4238],
+        [4672],
+        [4774],
+        [1555],
+        [3117]
+      ],
+      color: '#F05900'
+    }, {
+      name: '2013',
+      data: [
+        [2259],
+        [2487],
+        [2221],
+        [2625],
+        [3319],
+        [3757],
+        [1658],
+        [2494],
+        [2511],
+        [2679],
+        [2869],
+        [3999],
+        [4314],
+        [1942],
+        [3044],
+        [3108],
+        [3206],
+        [3580],
+        [4516],
+        [4734],
+        [1975],
+        [4317],
+        [3233],
+        [3],
+        [2774],
+        [2994],
+        [2846],
+        [1200],
+        [2186],
+        [2091]
+      ],
+      color: '#005958'
+    }, {
+      name: '2014',
+      data: [
+        [2389],
+        [2660],
+        [2651],
+        [3407],
+        [3521],
+        [1566],
+        [2588],
+        [2655],
+        [2766],
+        [2940],
+        [3663],
+        [4327],
+        [2013],
+        [3107],
+        [3297],
+        [3249],
+        [3598],
+        [4333],
+        [4928],
+        [2116],
+        [4176],
+        [4513],
+        [3557],
+        [7],
+        [3553],
+        [2635],
+        [1059],
+        [2305],
+        [2479],
+        [2346]
+      ],
+      color: '#009090'
+    }, {
+      name: '2015',
+      data: [
+        [3142],
+        [4609],
+        [5529],
+        [6104],
+        [2951],
+        [4742],
+        [4890],
+        [4787],
+        [4888],
+        [6128],
+        [6827],
+        [3032],
+        [4650],
+        [4945],
+        [4827],
+        [5238],
+        [6461],
+        [7075],
+        [2836],
+        [5448],
+        [5532],
+        [6374],
+        [4980],
+        [12],
+        [3883],
+        [1310],
+        [3437],
+        [3177],
+        [3440],
+        [3585]
+      ],
+      color: '#08BCBD'
+    }],
+    annotationsOptions: {
+      enabledButtons: false
+    },
+    annotations: [{
+      title: {
+        text: '<div style="">Newtown shooting:<br />June 14, 2016</div>',
+        style: {
+          color: '#F05900',
+          backgroundColor: 'red',
+          paddingLeft: '5px'
+        },
+      },
+      anchorX: "left",
+      anchorY: "top",
+      allowDragX: true,
+      xValue: Date.UTC(2012, 11, 14),
+      yValue: 10000,
+      shape: {
+        type: 'path',
+        params: {
+          d: ['M', 0, 5, 'L', 0, 60],
+          stroke: '#F05900'
+        }
+      }
+    }]
+  });
+});
 </script>
 
 </body>
