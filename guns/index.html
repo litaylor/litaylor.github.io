@@ -35,9 +35,10 @@
           }
         },
         tooltip: {
-        	headerFormat:'',
-        	pointFormat: '{series.name}: <b>{point.y} background checks</b>'
-        }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
+        	//headerFormat:'',
+          xDateFormat: '%B %d',
+        	pointFormat: '{series.name}: <b>{point.y} </b>background checks</b>'
+        },
         plotOptions: {
           area: {
             pointStart: Date.UTC(2012, 5, 1),
