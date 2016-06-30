@@ -6,6 +6,7 @@
 
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container3" style="min-width: 250px; max-width: 500px; min-height: 400px; margin: 0 auto"></div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -264,7 +265,8 @@
         });
       });
 </script>
-<script>$(function() {
+<script>
+$(function() {
   Highcharts.setOptions({
     lang: {
       thousandsSep: ','
@@ -476,9 +478,111 @@
       }
     }]
   });
-});
-</script>
+});</script>
+<script>
+	$(function() {
+  $('#container3').highcharts({
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'Registered background checks in June'
+    },
+    subtitle: {
+      text: '2012-2016'
+    },
+    xAxis: {
+      type: 'datetime'
+    },
+    yAxis: {
+      title: {
+        text: null
+      }
+    },
+    tooltip: {
+      pointFormat: '{series.name} background checks <b>{point.y:,.0f}</b><br/>on {point.x}'
+    }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
+    plotOptions: {
+      line: {
+        pointStart: Date.UTC(2016, 4, 30),
+        pointInterval: 24 * 3600 * 1000,
+        marker: {
+          enabled: false,
+          symbol: 'circle',
+          radius: 2,
+          states: {
+            hover: {
+              enabled: true
+            }
+          }
+        }
+      }
+    },
+    series: [{
+      name: '2012',
+      data: [
+        [2000],
+        [1955],
+        [2103],
+        [2688],
+        [2878],
+        [1090],
+        [1988],
+        [1878],
+        [1890],
+        [2089],
+        [2403],
+        [3021],
+        [2219],
+        [3714],
+        [3921],
+        [3956],
+        [4640],
+        [5365],
+        [6045],
+        [2161],
+        [3408],
+        [3480],
+        [3317],
+        [3549],
+        [4266],
+        [4566],
+        [1767]
+      ],
+      color: '#084141'
+    }],
 
+
+    annotationsOptions: {
+      enabledButtons: false
+    },
+    annotations: [{
+      title: {
+        text: '<div style="">Orlando shooting:<br />June 12, 2016</div>',
+        style: {
+          color: '#F05900',
+          backgroundColor: 'red',
+          paddingLeft: '5px'
+        },
+      },
+      anchorX: "left",
+      anchorY: "top",
+      allowDragX: true,
+      xValue: Date.UTC(2012, 5, 12),
+      yValue: 7000,
+      shape: {
+        type: 'path',
+        params: {
+          d: ['M', 0, 5, 'L', 0, 80],
+          stroke: '#F05900'
+        }
+      }
+    }]
+
+  });
+});
+
+</script>
 </body>
 
 
