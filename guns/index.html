@@ -12,573 +12,69 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>
 <script>
-  $(function() {
-  	Highcharts.setOptions({
-		lang: {
-			thousandsSep: ','
-		}
-	});
-      $('#container1').highcharts({
-        chart: {
-          type: 'area'
-        },
-        title: {
-          text: 'Registered background checks in June'
-        },
-        subtitle: {
-          text: '2012-2016'
-        },
-        xAxis: {
-          type: 'datetime'
-        },
-        yAxis: {
-          title: {
-            text: null
-          }
-        },
-        tooltip: {
-        	//headerFormat:'',
-          xDateFormat: '%B %d',
-        	pointFormat: '{series.name}: <b>{point.y} </b>background checks</b>'
-        },
-        plotOptions: {
-          area: {
-            pointStart: Date.UTC(2012, 5, 1),
-            pointInterval: 24 * 3600 * 1000,
-            marker: {
-              enabled: false,
-              symbol: 'circle',
-              radius: 2,
-              states: {
-                hover: {
-                  enabled: true
-                }
-              }
-            }
-          }
-        },
-        series: [{
-            name: '2012',
-            data: [
-            	[2462],
-              [2774],
-              [1176],
-              [1789],
-              [1741],
-              [1719],
-              [1734],
-              [2145],
-              [2317],
-              [886],
-              [1485],
-              [1655],
-              [1549],
-              [1875],
-              [2277],
-              [2499],
-              [955],
-              [1439],
-              [1529],
-              [1519],
-              [1651],
-              [2000],
-              [2522],
-              [991],
-              [1619],
-              [1526],
-              [1545],
-              [1657],
-              [2205],
-              [1831]
-            ],
-            color: '#084141'
-          },
-
-          {
-            name: '2013',
-            data: [
-		[2914],
-              [1140],
-              [1948],
-              [1791],
-              [1808],
-              [2013],
-              [2276],
-              [2938],
-              [1104],
-              [1697],
-              [1749],
-              [1777],
-              [1912],
-              [2275],
-              [2774],
-              [1048],
-              [1671],
-              [1588],
-              [1696],
-              [1712],
-              [2146],
-              [2518],
-              [984],
-              [1574],
-              [1585],
-              [1531],
-              [1672],
-              [2186],
-              [2543],
-              [983]
-
-            ],
-            color: '#005958'
-          },
-
-          {
-            name: '2014',
-            data: [
-            	[904],
-              [1649],
-              [1944],
-              [1830],
-              [1818],
-              [2240],
-              [2786],
-              [1282],
-              [1779],
-              [1672],
-              [1764],
-              [2055],
-              [2556],
-              [2539],
-              [870],
-              [1575],
-              [1554],
-              [1688],
-              [1774],
-              [2074],
-              [2325],
-              [1009],
-              [1550],
-              [1591],
-              [1579],
-              [1638],
-              [2137],
-              [2217],
-              [825],
-              [1559]
-            ],
-            color: '#009090'
-          }, {
-            name: '2015',
-            data: [
-            	[1969],
-              [1847],
-              [1937],
-              [2088],
-              [2481],
-              [2721],
-              [1056],
-              [1790],
-              [1846],
-              [1822],
-              [2160],
-              [2463],
-              [2519],
-              [1029],
-              [1674],
-              [1760],
-              [1776],
-              [2184],
-              [2643],
-              [3020],
-              [1237],
-              [1753],
-              [1678],
-              [1789],
-              [1822],
-              [2331],
-              [2549],
-              [1071],
-              [1738],
-              [1907]
-            ],
-            color: '#08BCBD'
-          }, {
-            name: '2016',
-            data: [
-            	[1955],
-              [2103],
-              [2688],
-              [2878],
-              [1090],
-              [1988],
-              [1878],
-              [1890],
-              [2089],
-              [2403],
-              [3021],
-              [2219],
-              [3714],
-              [3921],
-              [3956],
-              [4640],
-              [5365],
-              [6045],
-              [2161]
-	[3480],
-  	[3317],
-	[3549],
-	[4266],
-	[4566],
-	[1767]
-            ],
-            color: '#F05900'
-          }
-        ],
-
-
-				annotationsOptions: {
-            enabledButtons: false   
-        },
-        annotations: [{
-          title: {
-            text: '<div style="">Orlando shooting:<br />June 12, 2016</div>',
-            style: {
-              color: '#F05900',
-              backgroundColor: 'red',
-              paddingLeft: '5px'
-            },
-          },
-          anchorX: "left",
-          anchorY: "top",
-          allowDragX: true,
-          xValue: Date.UTC(2012, 5, 12),
-          yValue: 7000,
-          shape: {
-                type: 'path',
-                params: {
-                    d: ['M', 0, 5, 'L', 0, 80],
-                    stroke: '#F05900'
-                }
-            }
-          }]
-
-        });
-      });
-</script>
-<script>
 $(function() {
-  Highcharts.setOptions({
-    lang: {
-      thousandsSep: ','
-    }
-  });
-  $('#container2').highcharts({
+
+  $('#container').highcharts({
+
     chart: {
-      type: 'area'
+      polar: true
     },
+
     title: {
-      text: 'Registered background checks in December'
+      text: 'Average number of background checks, 2004-2015'
     },
-    subtitle: {
-      text: '2012-2016'
+
+    pane: {
+      startAngle: 0,
+      endAngle: 360
     },
+
     xAxis: {
-      type: 'datetime'
+      tickInterval: 1,
+      min: 0,
+      max: 12,
+      categories: ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+
     },
+
     yAxis: {
-      title: {
-        text: null
-      }
+      min: 0,
+      max: 75000,
+      endOnTick: false
     },
-    tooltip: {
-      //headerFormat:'',
-      xDateFormat: '%B %d',
-      pointFormat: '{series.name}: <b>{point.y} </b>background checks</b>'
-    },
+
     plotOptions: {
-      area: {
-        pointStart: Date.UTC(2012, 11, 1),
-        pointInterval: 24 * 3600 * 1000,
-        marker: {
-          enabled: false,
-          symbol: 'circle',
-          radius: 2,
-          states: {
-            hover: {
-              enabled: true
-            }
-          }
-        }
-      }
-    },
-    series: [{
-      name: '2012',
-      data: [
-        [2035],
-        [2841],
-        [2797],
-        [2791],
-        [2969],
-        [3776],
-        [4796],
-        [2155],
-        [2892],
-        [3019],
-        [3157],
-        [3388],
-        [4805],
-        [6945],
-        [3171],
-        [5735],
-        [7105],
-        [8250],
-        [8436],
-        [8730],
-        [7598],
-        [2524],
-        [4050],
-        [1],
-        [4292],
-        [4238],
-        [4672],
-        [4774],
-        [1555],
-        [3117]
-      ],
-      color: '#F05900'
-    }, {
-      name: '2013',
-      data: [
-        [2259],
-        [2487],
-        [2221],
-        [2625],
-        [3319],
-        [3757],
-        [1658],
-        [2494],
-        [2511],
-        [2679],
-        [2869],
-        [3999],
-        [4314],
-        [1942],
-        [3044],
-        [3108],
-        [3206],
-        [3580],
-        [4516],
-        [4734],
-        [1975],
-        [4317],
-        [3233],
-        [3],
-        [2774],
-        [2994],
-        [2846],
-        [1200],
-        [2186],
-        [2091]
-      ],
-      color: '#005958'
-    }, {
-      name: '2014',
-      data: [
-        [2389],
-        [2660],
-        [2651],
-        [3407],
-        [3521],
-        [1566],
-        [2588],
-        [2655],
-        [2766],
-        [2940],
-        [3663],
-        [4327],
-        [2013],
-        [3107],
-        [3297],
-        [3249],
-        [3598],
-        [4333],
-        [4928],
-        [2116],
-        [4176],
-        [4513],
-        [3557],
-        [7],
-        [3553],
-        [2635],
-        [1059],
-        [2305],
-        [2479],
-        [2346]
-      ],
-      color: '#009090'
-    }, {
-      name: '2015',
-      data: [
-        [3142],
-        [4609],
-        [5529],
-        [6104],
-        [2951],
-        [4742],
-        [4890],
-        [4787],
-        [4888],
-        [6128],
-        [6827],
-        [3032],
-        [4650],
-        [4945],
-        [4827],
-        [5238],
-        [6461],
-        [7075],
-        [2836],
-        [5448],
-        [5532],
-        [6374],
-        [4980],
-        [12],
-        [3883],
-        [1310],
-        [3437],
-        [3177],
-        [3440],
-        [3585]
-      ],
-      color: '#08BCBD'
-    }],
-    annotationsOptions: {
-      enabledButtons: false
-    },
-    annotations: [{
-      title: {
-        text: '<div style="">Newtown shooting:<br />June 14, 2016</div>',
-        style: {
-          color: '#F05900',
-          backgroundColor: 'red',
-          paddingLeft: '5px'
-        },
+      series: {
+        pointStart: 0,
+        pointInterval: 1
       },
-      anchorX: "left",
-      anchorY: "top",
-      allowDragX: true,
-      xValue: Date.UTC(2012, 11, 14),
-      yValue: 10000,
-      shape: {
-        type: 'path',
-        params: {
-          d: ['M', 0, 5, 'L', 0, 60],
-          stroke: '#F05900'
-        }
-      }
-    }]
-  });
-});</script>
-<script>
-	$(function() {
-  $('#container3').highcharts({
-    chart: {
-      type: 'line'
-    },
-    title: {
-      text: 'Registered background checks in June'
-    },
-    subtitle: {
-      text: '2012-2016'
-    },
-    xAxis: {
-      type: 'datetime'
-    },
-    yAxis: {
-      title: {
-        text: null
+      column: {
+        pointPadding: 0,
+        groupPadding: 0
       }
     },
-    tooltip: {
-      pointFormat: '{series.name} background checks <b>{point.y:,.0f}</b><br/>on {point.x}'
-    }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
-    plotOptions: {
-      line: {
-        pointStart: Date.UTC(2016, 4, 30),
-        pointInterval: 24 * 3600 * 1000,
-        marker: {
-          enabled: false,
-          symbol: 'circle',
-          radius: 2,
-          states: {
-            hover: {
-              enabled: true
-            }
-          }
-        }
-      }
-    },
+
     series: [{
-      name: '2012',
+      type: 'column',
+      name: 'Background Checks',
+      color: '#08BCBD',
       data: [
-        [2000],
-        [1955],
-        [2103],
-        [2688],
-        [2878],
-        [1090],
-        [1988],
-        [1878],
-        [1890],
-        [2089],
-        [2403],
-        [3021],
-        [2219],
-        [3714],
-        [3921],
-        [3956],
-        [4640],
-        [5365],
-        [6045],
-        [2161],
-        [3408],
-        [3480],
-        [3317],
-        [3549],
-        [4266],
-        [4566],
-        [1767]
-      ],
-      color: '#084141'
-    }],
-
-
-    annotationsOptions: {
-      enabledButtons: false
-    },
-    annotations: [{
-      title: {
-        text: '<div style="">Orlando shooting:<br />June 12, 2016</div>',
-        style: {
-          color: '#F05900',
-          backgroundColor: 'red',
-          paddingLeft: '5px'
+        [49933],
+        [53093],
+        [50359],
+        [43411],
+        [40065], {
+          y: 39166,
+          color: '#F05900'
         },
-      },
-      anchorX: "left",
-      anchorY: "top",
-      allowDragX: true,
-      xValue: Date.UTC(2012, 5, 12),
-      yValue: 7000,
-      shape: {
-        type: 'path',
-        params: {
-          d: ['M', 0, 5, 'L', 0, 80],
-          stroke: '#F05900'
-        }
-      }
+        [39453],
+        [42733],
+        [41895],
+        [47084],
+        [55516],
+        [74462]
+      ]
     }]
-
   });
 });
 
