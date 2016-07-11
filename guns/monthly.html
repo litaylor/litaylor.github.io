@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+<body>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script>
+  WebFontConfig = {
+    google: {
+      families: ['Open+Sans:400,600,800:latin']
+    }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+
+$(function() {
+  $('#container').highcharts({
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'Registered background checks by month'
+    },
+    subtitle: {
+      text: '2004-2016'
+    },
+    xAxis: {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+      title: {
+        text: null
+      }
+    },
+    tooltip: {
+      pointFormat: '<b>{point.y:,.0f}</b> background checks in {series.name}'
+    }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
+    plotOptions: {
+      line: {
+        marker: {
+          enabled: false,
+          symbol: 'circle',
+          radius: 2,
+          states: {
+            hover: {
+              enabled: true
+            }
+          }
+        }
+      }
+    },
+    series: [{
+      name: '2004',
+      data: [
+        [24612],
+        [24785],
+        [24084],
+        [20697],
+        [19286],
+        [19948],
+        [19645],
+        [21368],
+        [19710],
+        [29368],
+        [31392],
+        [43384]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2005',
+      data: [
+        [27160],
+        [27259],
+        [26521],
+        [25951],
+        [23113],
+        [23595],
+        [22612],
+        [26515],
+        [29734],
+        [32108],
+        [36207],
+        [50015]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2006',
+      data: [
+        [32785],
+        [33345],
+        [33089],
+        [28594],
+        [27753],
+        [27672],
+        [26491],
+        [30543],
+        [30431],
+        [33550],
+        [37763],
+        [49324]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2007',
+      data: [
+        [33292],
+        [34878],
+        [35629],
+        [30787],
+        [30630],
+        [30455],
+        [28349],
+        [32363],
+        [30934],
+        [33689],
+        [36948],
+        [48416]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2008',
+      data: [
+        [36025],
+        [38458],
+        [37634],
+        [34965],
+        [34036],
+        [32676],
+        [33114],
+        [32680],
+        [32381],
+        [42224],
+        [63936],
+        [63931]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2009',
+      data: [
+        [49072],
+        [51585],
+        [53514],
+        [47013],
+        [39211],
+        [36741],
+        [37076],
+        [38418],
+        [37809],
+        [42460],
+        [43977],
+        [55218]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2010',
+      data: [
+        [44035],
+        [48343],
+        [49779],
+        [40699],
+        [38026],
+        [37011],
+        [38746],
+        [40155],
+        [40257],
+        [44016],
+        [48185],
+        [62593]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2011',
+      data: [
+        [50387],
+        [57220],
+        [54441],
+        [46765],
+        [41826],
+        [41830],
+        [41741],
+        [46887],
+        [46925],
+        [49158],
+        [55650],
+        [73825]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2012',
+      data: [
+        [55220],
+        [68723],
+        [65267],
+        [54916],
+        [52614],
+        [53072],
+        [53907],
+        [59850],
+        [56566],
+        [61627],
+        [84745],
+        [131103]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2013',
+      data: [
+        [114563],
+        [95868],
+        [83754],
+        [70808],
+        [60132],
+        [55553],
+        [55569],
+        [59127],
+        [55480],
+        [60404],
+        [71461],
+        [86841]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2014',
+      data: [
+        [62938],
+        [75794],
+        [69166],
+        [59316],
+        [54902],
+        [52783],
+        [53150],
+        [59214],
+        [58375],
+        [64860],
+        [72908],
+        [90957]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2015',
+      data: [
+        [69107],
+        [80853],
+        [71429],
+        [60425],
+        [59246],
+        [58660],
+        [63038],
+        [65675],
+        [64143],
+        [71546],
+        [83023],
+        [137941]
+      ],
+      color: '#cccccc'
+    }, {
+      name: '2004-15 average',
+      data: [
+        [49933],
+        [53093],
+        [50359],
+        [43411],
+        [40065],
+        [39166],
+        [39453],
+        [42733],
+        [41895],
+        [47084],
+        [55516],
+        [74462]
+      ],
+      color: '#222222',
+      lineWidth: 4
+    }, {
+      name: '2016',
+      data: [
+        [92822],
+        [92872],
+        [79816],
+        [72209],
+        [63400],
+        [92081]
+      ],
+      color: '#50A291',
+      lineWidth: 4
+    }],
+
+
+
+
+
+  });
+});
+
+</script>
+
+</body>
+</html>
