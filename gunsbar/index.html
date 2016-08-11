@@ -1,0 +1,150 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<style>
+	  .highcharts-legend,
+.highcharts-axis-labels {
+  font-family: Open Sans;
+  font-weight: normal;
+}
+
+.highcharts-title {
+  font-family: Open Sans;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+	</style>
+</head>
+<body>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://blacklabel.github.io/annotations/js/annotations.js"></script>
+
+<div id="container" style="max-width: 400px; height: 400px; margin: 0 auto"></div>
+<script>
+    WebFontConfig = {
+    google: {
+      families: ['Open+Sans:400,600,800:latin']
+    }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+
+  $(function() {
+  	Highcharts.setOptions({
+        lang: {
+            thousandsSep: ','
+        }
+    });
+    $('#container').highcharts({
+      title: {
+        text: 'Registered background checks, weekly'
+      },
+      subtitle: {
+        text: 'Before and after the Orlando and Newtown shootings'
+      },
+      xAxis: {
+      	title: {
+        	enabled: true,
+          text: 'Weeks before or after shooting'
+        },
+        tickInterval: 2,
+        gridlinewidth: 1,
+        type: 'linear',
+        min: -5,
+        max: 5,
+      },
+      yAxis: {
+      	min: 0,
+        title: {
+          text: null
+        },
+        labels:{
+        	format: '{value:,.0f}'
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          if (this.x < -1) {
+            return Math.abs(this.x) + ' weeks before the <b>' + this.series.name + '</b> shooting,<br /> there were <b>' + this.y + '</b> background checks <br /> registered in Florida';
+          }
+          if (this.x == -1) {
+            return 'The week before the <b>' + this.series.name + '</b> shooting,<br /> there were <b>' + this.y + '</b> background checks <br /> registered in Florida';
+          }
+          if (this.x > 1) {
+            return Math.abs(this.x) + ' weeks after the <b>' + this.series.name + '</b><br />shooting, there were <b>' + this.y + '</b><br />background checks in Florida';
+          }
+          if (this.x == 1) {
+            return Math.abs(this.x) + ' week after the <b>' + this.series.name + '</b><br />shooting, there were <b>' + this.y + '</b><br />background checks in Florida';
+          }
+          if (this.x == 0) {
+            return 'The week beginning the day of the<br /><b>'+ this.series.name + '</b> shooting, there were <b>' + this.y + '</b><br />background checks in Florida';
+          }
+        }
+      }, // ***************** HAVE TO CHANGE SO IT DOESN'T SHOW WRONG WEEKDAY
+      plotOptions: {
+        column: {
+        	pointStart:-5,
+          marker: {
+            enabled: false,
+            symbol: 'circle',
+            radius: 2,
+            states: {
+              hover: {
+                enabled: true
+              }
+            }
+          }
+        }
+      },
+      series: [{
+          type: 'column',
+          name: 'Newtown',
+          data: [[19148],[18166],[23076],[21703],[23183],[44447],[31433],[21845],[25478],[29843]],
+          color: '#A14F5F',
+          lineWidth: 4
+        },{
+          type: 'column',
+          name: 'Orlando',
+          data: [[14458],[14853],[14817],[13768],[14359],[29860],[24747],[21397],[19461],[22379]],
+          color: '#50A291',
+          lineWidth: 4,
+        }
+
+
+      ],
+      annotationsOptions: {
+            enabledButtons: false   
+        },
+      annotations: [{
+      anchorX: 'left',
+		anchorY: 'top',
+    xValue: 0,
+    yValue: 50000,
+    title: {
+        text: "Week of shooting"
+    },
+    shape: {
+			type: 'path',
+			params: {
+				d: ['M', 0, 0, 'L', 0, 400 ]
+			}
+		}
+       }]
+
+
+
+
+
+    });
+  });
+
+</script>
