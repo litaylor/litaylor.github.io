@@ -39,7 +39,7 @@
       position: absolute;
       top:240px;
       /*left:0px;*/
-      bottom:0px;
+      bottom:48px;
     }
     .c3-line, .c3-target.c3-focused path.c3-line, .c3-target.c3-focused path.c3-step{
       stroke-width: 4px;
@@ -57,6 +57,23 @@
       left:0px;
       /*height:300px;*/
     }
+    .swiper-container,.swiper-slide{
+      pointer-events: none;
+    }
+    .button{
+      position: fixed;
+      bottom:0px;
+      height: 48px;
+      background-color: #cccccc;
+      width: 50%;
+      text-align: center;
+    }
+    .buttonUp{
+      left:0px;
+    }
+    .buttonDown{
+      right:0px;
+    }
   </style>
 
 </head>
@@ -66,13 +83,41 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide">slide 0</div>
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">
+          <div class="card">
+            <h1>Headline headline</h1>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            2016 saw a surge in early voting for most in North Carolina. Ten percent more early ballots came from white voters than in 2012,
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            Asian early voters surged dramatically,
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            as did Native Americans
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            and other racial minorities. However,
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            black early voters dropped sharply. No other measured racial group saw fewer early voters than four years ago.
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card">
+            The total vote count shows the size of the drop. Nearly 80,000 fewer black people in North Carolina checked ballots than the previous election, while the state as a whole flocked to early polls.
+          </div>
+        </div>
     </div>
 
     <!-- If we need scrollbar -->
@@ -81,6 +126,12 @@
 
   <div class="content">
     <div id="c3Line" class="chartStyle chartSkinny"></div>
+  </div>
+  <div class="button buttonUp">
+    ^
+  </div>
+  <div class="button buttonDown">
+    V
   </div>
 
   <script>

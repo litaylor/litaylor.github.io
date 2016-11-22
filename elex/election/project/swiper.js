@@ -5,7 +5,10 @@ $(document).ready(function () {
       direction: 'vertical',
       speed: 100,
       keyboardControl: true,
+      mousewheelControl: true,
       loop: false,
+      nextButton: ".buttonDown",
+      prevButton: ".buttonUp",
       onSlideNextStart: function onSlideNextStart(swiper) {
         slideIt('next',swiper.activeIndex);
       },
