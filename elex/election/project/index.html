@@ -42,6 +42,7 @@
       top:240px;
       /*left:0px;*/
       bottom:48px;
+      background-color: #ffffff;
     }
     .c3-line, .c3-target.c3-focused path.c3-line, .c3-target.c3-focused path.c3-step{
       stroke-width: 4px;
@@ -59,8 +60,10 @@
       left:0px;
       /*height:300px;*/
     }
-    .swiper-container,.swiper-slide{
-
+    @media(min-width:991px){
+      .swiper-container,.swiper-slide{
+        pointer-events: none;
+      }
     }
     .button{
       position: fixed;
@@ -112,22 +115,23 @@
         <!-- Slides -->
         <div class="swiper-slide">
           <div class="card">
-            <h1>Headline headline</h1>
+            <h1>Early voting increased for everyone but black voters in N.C.</h1>
+            In a state where one-stop early voting became the favorite method for many, a divide emerged along racial lines.
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            2016 saw a surge in early voting in North Carolina, for most of the state's voting population. Ten percent more early ballots came from <span class="highlight hi1">white</span> voters than in 2012,
+            2016 saw a surge in early voting in North Carolina, for most of the state's voting population. Ten percent more early ballots came from <span class="highlight hi1">white</span> voters than in 2012 ...
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <span class="highlight hi2">Asian</span> early voters surged dramatically,
+            and <span class="highlight hi2">Asian</span> early voters surged dramatically,
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            as did <span class="highlight hi3">Native Americans</span>
+            as did <span class="highlight hi3">Native Americans</span> ...
           </div>
         </div>
         <div class="swiper-slide">
@@ -145,12 +149,18 @@
             The total vote count shows the size of the disparity. Nearly <span class="highlight hi5">80,000 fewer black people</span> in North Carolina voted early than in the previous election, while the state as a whole flocked to early polls. At the same time, turnout was nearly <span class="highlight hi1">195,000 higher among white voters</span>.
           </div>
         </div>
+        <div class="swiper-slide">
+          <div class="card">
+            The drop was across the board. Eighty-one of 100 counties saw black early voting turnout fall. (Graham County, which increased from 0 to 1 black voter, is not shown.)
+          </div>
+        </div>
     </div>
 
   </div>
 
   <div class="content">
     <div id="c3Line" class="chartStyle chartSkinny"></div>
+    <div id="c3Bar" class="chartStyle chartSkinny" style="display:none"></div>
   </div>
   <div class="button buttonUp">
     BACK
@@ -161,6 +171,7 @@
 
   <script>
     var chartEarly;
+    var chartCounty;
     var formatter;
     var formatterThousands = d3.format("+,");
     function formatterPct(d,fType) {
@@ -310,9 +321,15 @@
               ['BLACK or AFRICAN AMERICAN', 0, -10.46]
             ]
           });
-          // chartEarly.flush();
+
         break;
         case 6:
+          if (dir=='prev') {
+            $("#c3Bar").fadeOut(300,function(){
+              $("#c3Line").fadeIn(300);
+            });
+            chartEarly.flush();
+          }
           fType='int';
           $(".c3-target-OTHER---UNDESIGNATED").show();
           chartEarly.load({
@@ -326,6 +343,274 @@
             ]
           });
           // chartEarly.flush();
+        break;
+        case 7:
+          $("#c3Line").fadeOut(300,function() {
+            $("#c3Bar").fadeIn(300, function(){
+              chartCounty = c3.generate({
+                bindto: '#c3Bar',
+                data: { // COUNTY COUNTY COUNTY
+                  columns: [
+                    ["ALAMANCE",-0.0527098831],
+                    ["ALEXANDER",-0.113345521],
+                    ["ALLEGHANY",0.02040816327],
+                    ["ANSON",-0.227478076],
+                    ["ASHE",0.07894736842],
+                    ["AVERY",0],
+                    ["BEAUFORT",-0.1721773206],
+                    ["BERTIE",-0.1867080424],
+                    ["BLADEN",-0.2528187337],
+                    ["BRUNSWICK",-0.1683070866],
+                    ["BUNCOMBE",-0.1090747331],
+                    ["BURKE",-0.08981380066],
+                    ["CABARRUS",0.05434662543],
+                    ["CALDWELL",-0.2638398115],
+                    ["CAMDEN",-0.115530303],
+                    ["CARTERET",0.01379310345],
+                    ["CASWELL",0.01205727204],
+                    ["CATAWBA",-0.1787317073],
+                    ["CHATHAM",-0.05062325108],
+                    ["CHEROKEE",0.05084745763],
+                    ["CHOWAN",-0.1992903607],
+                    ["CLAY",-0.25],
+                    ["CLEVELAND",-0.07766323024],
+                    ["COLUMBUS",-0.2602912098],
+                    ["CRAVEN",-0.117085863],
+                    ["CUMBERLAND",-0.1063447632],
+                    ["CURRITUCK",0.02058823529],
+                    ["DARE",-0.04149377593],
+                    ["DAVIDSON",-0.1608796296],
+                    ["DAVIE",-0.09343936382],
+                    ["DUPLIN",-0.117083947],
+                    ["DURHAM",-0.02475775721],
+                    ["EDGECOMBE",-0.1321434288],
+                    ["FORSYTH",-0.1410632176],
+                    ["FRANKLIN",-0.03059689015],
+                    ["GASTON",-0.07829476653],
+                    ["GATES",-0.1048321048],
+                    ["GRANVILLE",-0.1126340073],
+                    ["GREENE",-0.187250996],
+                    ["GUILFORD",-0.07090232359],
+                    ["HALIFAX",-0.2071709135],
+                    ["HARNETT",-0.06454518163],
+                    ["HAYWOOD",0.05025125628],
+                    ["HENDERSON",0.03378378378],
+                    ["HERTFORD",-0.1445600347],
+                    ["HOKE",-0.04444057163],
+                    ["HYDE",-0.05555555556],
+                    ["IREDELL",-0.152931181],
+                    ["JACKSON",0.7416267943],
+                    ["JOHNSTON",0.003883710608],
+                    ["JONES",-0.1756046267],
+                    ["LEE",-0.1473684211],
+                    ["LENOIR",-0.1312798363],
+                    ["LINCOLN",-0.1163675911],
+                    ["MACON",-0.2926829268],
+                    ["MADISON",1],
+                    ["MARTIN",-0.1524585394],
+                    ["MCDOWELL",0.04427083333],
+                    ["MECKLENBURG",-0.09832828144],
+                    ["MITCHELL",0.1666666667],
+                    ["MONTGOMERY",0.07107023411],
+                    ["MOORE",-0.2146151979],
+                    ["NASH",-0.04356665699],
+                    ["NEW HANOVER",-0.2348544799],
+                    ["NORTHAMPTON",-0.2385972954],
+                    ["ONSLOW",-0.1103651987],
+                    ["ORANGE",-0.1169105048],
+                    ["PAMLICO",-0.2100098135],
+                    ["PASQUOTANK",-0.2202178961],
+                    ["PENDER",-0.1445988092],
+                    ["PERQUIMANS",-0.1558685446],
+                    ["PERSON",-0.07624493686],
+                    ["PITT",-0.06426480075],
+                    ["POLK",-0.2511737089],
+                    ["RANDOLPH",0.02467035304],
+                    ["RICHMOND",-0.12181941],
+                    ["ROBESON",-0.2608252097],
+                    ["ROCKINGHAM",-0.07436366661],
+                    ["ROWAN",-0.198480283],
+                    ["RUTHERFORD",-0.2119258662],
+                    ["SAMPSON",-0.1549904861],
+                    ["SCOTLAND",-0.1572470374],
+                    ["STANLY",-0.1264044944],
+                    ["STOKES",-0.07911392405],
+                    ["SURRY",-0.1061093248],
+                    ["SWAIN",-0.625],
+                    ["TRANSYLVANIA",-0.2565320665],
+                    ["TYRRELL",-0.1797752809],
+                    ["UNION",-0.0786622213],
+                    ["VANCE",-0.1031291854],
+                    ["WAKE",-0.08435387479],
+                    ["WARREN",-0.110982659],
+                    ["WASHINGTON",-0.1605215827],
+                    ["WATAUGA",0.1734417344],
+                    ["WAYNE",-0.1519576265],
+                    ["WILKES",-0.1903073286],
+                    ["WILSON",-0.144295302],
+                    ["YADKIN",0.07142857143],
+                    ["YANCEY",-0.02857142857]
+                  ],
+                  // [
+                  //   ["MADISON",1],
+                  //   ["JACKSON",0.7416267943],
+                  //   ["WATAUGA",0.1734417344],
+                  //   ["MITCHELL",0.1666666667],
+                  //   ["ASHE",0.07894736842],
+                  //   ["YADKIN",0.07142857143],
+                  //   ["MONTGOMERY",0.07107023411],
+                  //   ["CABARRUS",0.05434662543],
+                  //   ["CHEROKEE",0.05084745763],
+                  //   ["HAYWOOD",0.05025125628],
+                  //   ["MCDOWELL",0.04427083333],
+                  //   ["HENDERSON",0.03378378378],
+                  //   ["RANDOLPH",0.02467035304],
+                  //   ["CURRITUCK",0.02058823529],
+                  //   ["ALLEGHANY",0.02040816327],
+                  //   ["CARTERET",0.01379310345],
+                  //   ["CASWELL",0.01205727204],
+                  //   ["JOHNSTON",0.003883710608],
+                  //   ["AVERY",0],
+                  //   ["DURHAM",-0.02475775721],
+                  //   ["YANCEY",-0.02857142857],
+                  //   ["FRANKLIN",-0.03059689015],
+                  //   ["DARE",-0.04149377593],
+                  //   ["NASH",-0.04356665699],
+                  //   ["HOKE",-0.04444057163],
+                  //   ["CHATHAM",-0.05062325108],
+                  //   ["ALAMANCE",-0.0527098831],
+                  //   ["HYDE",-0.05555555556],
+                  //   ["PITT",-0.06426480075],
+                  //   ["HARNETT",-0.06454518163],
+                  //   ["GUILFORD",-0.07090232359],
+                  //   ["ROCKINGHAM",-0.07436366661],
+                  //   ["PERSON",-0.07624493686],
+                  //   ["CLEVELAND",-0.07766323024],
+                  //   ["GASTON",-0.07829476653],
+                  //   ["UNION",-0.0786622213],
+                  //   ["STOKES",-0.07911392405],
+                  //   ["WAKE",-0.08435387479],
+                  //   ["BURKE",-0.08981380066],
+                  //   ["DAVIE",-0.09343936382],
+                  //   ["MECKLENBURG",-0.09832828144],
+                  //   ["VANCE",-0.1031291854],
+                  //   ["Grand Total",-0.1046279047],
+                  //   ["GATES",-0.1048321048],
+                  //   ["SURRY",-0.1061093248],
+                  //   ["CUMBERLAND",-0.1063447632],
+                  //   ["BUNCOMBE",-0.1090747331],
+                  //   ["ONSLOW",-0.1103651987],
+                  //   ["WARREN",-0.110982659],
+                  //   ["GRANVILLE",-0.1126340073],
+                  //   ["ALEXANDER",-0.113345521],
+                  //   ["CAMDEN",-0.115530303],
+                  //   ["LINCOLN",-0.1163675911],
+                  //   ["ORANGE",-0.1169105048],
+                  //   ["DUPLIN",-0.117083947],
+                  //   ["CRAVEN",-0.117085863],
+                  //   ["RICHMOND",-0.12181941],
+                  //   ["STANLY",-0.1264044944],
+                  //   ["LENOIR",-0.1312798363],
+                  //   ["EDGECOMBE",-0.1321434288],
+                  //   ["FORSYTH",-0.1410632176],
+                  //   ["WILSON",-0.144295302],
+                  //   ["HERTFORD",-0.1445600347],
+                  //   ["PENDER",-0.1445988092],
+                  //   ["LEE",-0.1473684211],
+                  //   ["WAYNE",-0.1519576265],
+                  //   ["MARTIN",-0.1524585394],
+                  //   ["IREDELL",-0.152931181],
+                  //   ["SAMPSON",-0.1549904861],
+                  //   ["PERQUIMANS",-0.1558685446],
+                  //   ["SCOTLAND",-0.1572470374],
+                  //   ["WASHINGTON",-0.1605215827],
+                  //   ["DAVIDSON",-0.1608796296],
+                  //   ["BRUNSWICK",-0.1683070866],
+                  //   ["BEAUFORT",-0.1721773206],
+                  //   ["JONES",-0.1756046267],
+                  //   ["CATAWBA",-0.1787317073],
+                  //   ["TYRRELL",-0.1797752809],
+                  //   ["BERTIE",-0.1867080424],
+                  //   ["GREENE",-0.187250996],
+                  //   ["WILKES",-0.1903073286],
+                  //   ["ROWAN",-0.198480283],
+                  //   ["CHOWAN",-0.1992903607],
+                  //   ["HALIFAX",-0.2071709135],
+                  //   ["PAMLICO",-0.2100098135],
+                  //   ["RUTHERFORD",-0.2119258662],
+                  //   ["MOORE",-0.2146151979],
+                  //   ["PASQUOTANK",-0.2202178961],
+                  //   ["ANSON",-0.227478076],
+                  //   ["NEW HANOVER",-0.2348544799],
+                  //   ["NORTHAMPTON",-0.2385972954],
+                  //   ["CLAY",-0.25],
+                  //   ["POLK",-0.2511737089],
+                  //   ["BLADEN",-0.2528187337],
+                  //   ["TRANSYLVANIA",-0.2565320665],
+                  //   ["COLUMBUS",-0.2602912098],
+                  //   ["ROBESON",-0.2608252097],
+                  //   ["CALDWELL",-0.2638398115],
+                  //   ["MACON",-0.2926829268],
+                  //   ["SWAIN",-0.625]
+                  // ],
+                  type: 'bar',
+                  labels:false
+                },
+                bar: {
+                  width: {
+                      ratio: 0.99 // this makes bar width 50% of length between ticks
+                  }
+                  // or
+                  //width: 100 // this makes bar width 100px
+                },
+                color : {
+                  pattern: ['FF1E54']
+                },
+                grid: {
+                    y: {
+                        lines: [{value: 0}]
+                    }
+                },
+                tooltip: {
+                    grouped: false // Default true
+                },
+                axis: {
+                  x: {
+                    type: 'category',
+                    categories: ['% change, 2012 - 2016 black early voting by county']
+                  },
+                  y : {
+                    tick : {
+                      format: d3.format("+.0%")
+                    }
+                  }
+                },
+                legend:{
+                  show: false
+                },
+                point: {
+                  r: 3
+                },
+                transition:{
+                  duration: 1000
+                },
+                oninit: function () {   // From jsfiddle by Masayuki Tanaka
+                  this.main.append('rect')
+                      .style('fill', 'white')
+                      .attr('x', 0.5)
+                      .attr('y', -0.5)
+                      .attr('width', this.width)
+                      .attr('height', this.height)
+                    .transition().duration(1000)
+                      .attr('x', this.width)
+                      .attr('width', 0)
+                    .remove();
+              }
+              });
+            })
+          });
+
+
         break;
 
         default:
