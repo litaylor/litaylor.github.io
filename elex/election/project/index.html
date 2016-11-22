@@ -19,11 +19,13 @@
   <script src="https://d3js.org/d3-axis.v1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
   <script src="c3/c3.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
 
 
   <style>
     body,html{
       /*overflow: hidden;*/
+      font-family: 'Merriweather Sans';
     }
     .content{
       position: absolute;
@@ -33,8 +35,8 @@
       height:100%;
     }
     .chartSkinny{
-      /*max-width: 720px;*/
-      width:100%;
+      max-width: 720px;
+      /*width:100%;*/
       margin:0 auto;
       position: absolute;
       top:240px;
@@ -58,7 +60,7 @@
       /*height:300px;*/
     }
     .swiper-container,.swiper-slide{
-      /*pointer-events: none;*/
+
     }
     .button{
       position: fixed;
@@ -67,6 +69,7 @@
       background-color: #cccccc;
       width: 50%;
       text-align: center;
+      z-index: 900;
     }
     .buttonUp{
       left:0px;
@@ -74,6 +77,30 @@
     .buttonDown{
       right:0px;
     }
+    .card{
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 12px;
+    }
+    .highlight {
+      border-bottom: thick solid;
+      padding:2px;
+    }
+    .hi1{
+      border-bottom-color: #FF1E54;
+    }
+    .hi2{
+      border-bottom-color: #007AFF;
+    }
+    .hi3{
+      border-bottom-color: #84FF00;
+    }
+    .hi5{
+      border-bottom-color: #FFD80D;
+    }
+    /*['FF1E54','007AFF','84FF00','FF5D00','FFD80D','rgb(140, 86, 75)']*/
   </style>
 
 </head>
@@ -90,17 +117,17 @@
         </div>
         <div class="swiper-slide">
           <div class="card">
-            2016 saw a surge in early voting for most in North Carolina. Ten percent more early ballots came from white voters than in 2012,
+            2016 saw a surge in early voting for most in North Carolina, for most of the state's voting population. Ten percent more early ballots came from <span class="highlight hi1">white</span> voters than in 2012,
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            Asian early voters surged dramatically,
+            <span class="highlight hi2">Asian</span> early voters surged dramatically,
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            as did Native Americans
+            as did <span class="highlight hi3">Native Americans</span>
           </div>
         </div>
         <div class="swiper-slide">
@@ -110,28 +137,26 @@
         </div>
         <div class="swiper-slide">
           <div class="card">
-            black early voters dropped sharply. No other measured racial group saw fewer early voters than four years ago.
+            <span class="highlight hi5">black</span> early voters dropped sharply. No other measured racial group saw fewer early voters than four years ago.
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            The total vote count shows the size of the drop. Nearly 80,000 fewer black people in North Carolina checked ballots than the previous election, while the state as a whole flocked to early polls.
+            The total vote count shows the size of the drop. Nearly <span class="highlight hi5">80,000 fewer black people</span> in North Carolina voted early than in the previous election, while the state as a whole flocked to early polls. At the same time, turnout was nearly <span class="highlight hi1">195,000 higher among white voters</span>.
           </div>
         </div>
     </div>
 
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
   </div>
 
   <div class="content">
     <div id="c3Line" class="chartStyle chartSkinny"></div>
   </div>
   <div class="button buttonUp">
-    ^
+    BACK
   </div>
   <div class="button buttonDown">
-    V
+    NEXT
   </div>
 
   <script>
@@ -169,6 +194,9 @@
                 ['WHITE', 0, 10.40]
               ],
               labels:false
+            },
+            color : {
+              pattern: ['FF1E54','007AFF','84FF00','FF5D00','FFD80D','rgb(140, 86, 75)']
             },
             grid: {
                 y: {

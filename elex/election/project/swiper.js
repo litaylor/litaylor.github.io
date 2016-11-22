@@ -3,12 +3,13 @@ $(document).ready(function () {
     var swiper = new Swiper ('.swiper-container', {
       // Optional parameters
       direction: 'vertical',
-      speed: 100,
+      speed: 400,
       keyboardControl: true,
       mousewheelControl: true,
       loop: false,
       nextButton: ".buttonDown",
       prevButton: ".buttonUp",
+      scrollbarHide: true,
       onSlideNextStart: function onSlideNextStart(swiper) {
         slideIt('next',swiper.activeIndex);
       },
