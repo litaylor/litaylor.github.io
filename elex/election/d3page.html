@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.js"></script>
+  <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+  <style>
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+    }
+
+      /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
+
+      /* Style northward tooltips differently */
+    .d3-tip.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="chartContainer" style="position:absolute; top:0px; left:0px; height:500px; width:100%">
+    &nbsp;
+  </div>
+
+		<script type="text/javascript">
+
+			//Width and height
+      var size=500;
+			var w = size;
+			var h = size;
+			var barPadding = 1;
+      var leftMargin = 50;
+
+			var dataset = /*[
+  ["MADISON",1],
+  ["JACKSON",0.7416267943,"cut"],
+  ["WATAUGA",0.1734417344],
+  ["MITCHELL",0.1666666667],
+  ["ASHE",0.07894736842],
+  ["YADKIN",0.07142857143],
+  ["MONTGOMERY",0.07107023411],
+  ["CABARRUS",0.05434662543],
+  ["CHEROKEE",0.05084745763],
+  ["HAYWOOD",0.05025125628],
+  ["MCDOWELL",0.04427083333],
+  ["HENDERSON",0.03378378378,"cut"],
+  ["RANDOLPH",0.02467035304],
+  ["CURRITUCK",0.02058823529],
+  ["ALLEGHANY",0.02040816327],
+  ["CARTERET",0.01379310345],
+  ["CASWELL",0.01205727204],
+  ["JOHNSTON",0.003883710608,"cut"],
+  ["AVERY",0],
+  ["DURHAM",-0.02475775721],
+  ["YANCEY",-0.02857142857],
+  ["FRANKLIN",-0.03059689015],
+  ["DARE",-0.04149377593],
+  ["NASH",-0.04356665699,"cut"],
+  ["HOKE",-0.04444057163],
+  ["CHATHAM",-0.05062325108],
+  ["ALAMANCE",-0.0527098831,"cut"],
+  ["HYDE",-0.05555555556],
+  ["PITT",-0.06426480075],
+  ["HARNETT",-0.06454518163],
+  ["GUILFORD",-0.07090232359],
+  ["ROCKINGHAM",-0.07436366661],
+  ["PERSON",-0.07624493686],
+  ["CLEVELAND",-0.07766323024],
+  ["GASTON",-0.07829476653,"cut"],
+  ["UNION",-0.0786622213],
+  ["STOKES",-0.07911392405],
+  ["WAKE",-0.08435387479],
+  ["BURKE",-0.08981380066],
+  ["DAVIE",-0.09343936382],
+  ["MECKLENBURG",-0.09832828144,"cut"],
+  ["VANCE",-0.1031291854],
+  ["GATES",-0.1048321048],
+  ["SURRY",-0.1061093248],
+  ["CUMBERLAND",-0.1063447632],
+  ["BUNCOMBE",-0.1090747331],
+  ["ONSLOW",-0.1103651987,"cut"],
+  ["WARREN",-0.110982659],
+  ["GRANVILLE",-0.1126340073],
+  ["ALEXANDER",-0.113345521],
+  ["CAMDEN",-0.115530303],
+  ["LINCOLN",-0.1163675911],
+  ["ORANGE",-0.1169105048],
+  ["DUPLIN",-0.117083947],
+  ["CRAVEN",-0.117085863,"cut"],
+  ["RICHMOND",-0.12181941],
+  ["STANLY",-0.1264044944],
+  ["LENOIR",-0.1312798363],
+  ["EDGECOMBE",-0.1321434288],
+  ["FORSYTH",-0.1410632176],
+  ["WILSON",-0.144295302],
+  ["HERTFORD",-0.1445600347],
+  ["PENDER",-0.1445988092],
+  ["LEE",-0.1473684211],
+  ["WAYNE",-0.1519576265,"cut"],
+  ["MARTIN",-0.1524585394],
+  ["IREDELL",-0.152931181],
+  ["SAMPSON",-0.1549904861,"cut"],
+  ["PERQUIMANS",-0.1558685446],
+  ["SCOTLAND",-0.1572470374],
+  ["WASHINGTON",-0.1605215827],
+  ["DAVIDSON",-0.1608796296],
+  ["BRUNSWICK",-0.1683070866,"cut"],
+  ["BEAUFORT",-0.1721773206],
+  ["JONES",-0.1756046267],
+  ["CATAWBA",-0.1787317073],
+  ["TYRRELL",-0.1797752809],
+  ["BERTIE",-0.1867080424],
+  ["GREENE",-0.187250996],
+  ["WILKES",-0.1903073286],
+  ["ROWAN",-0.198480283,"cut"],
+  ["CHOWAN",-0.1992903607],
+  ["HALIFAX",-0.2071709135],
+  ["PAMLICO",-0.2100098135],
+  ["RUTHERFORD",-0.2119258662],
+  ["MOORE",-0.2146151979],
+  ["PASQUOTANK",-0.2202178961],
+  ["ANSON",-0.227478076],
+  ["NEW HANOVER",-0.2348544799],
+  ["NORTHAMPTON",-0.2385972954,"cut"],
+  ["CLAY",-0.25],
+  ["POLK",-0.2511737089,"cut"],
+  ["BLADEN",-0.2528187337],
+  ["TRANSYLVANIA",-0.2565320665],
+  ["COLUMBUS",-0.2602912098],
+  ["ROBESON",-0.2608252097,"cut"],
+  ["CALDWELL",-0.2638398115],
+  ["MACON",-0.2926829268],
+  ["SWAIN",-0.625]
+]*/
+[
+  ["MADISON",1,"",0.1764],
+  ["JACKSON",0.7416267943,"cut",0.2844],
+  ["WATAUGA",0.1734417344,"",0.1672],
+  ["MITCHELL",0.1666666667,"",0.0798],
+  ["ASHE",0.07894736842,"",0.1041],
+  ["YADKIN",0.07142857143,"",0.2751],
+  ["MONTGOMERY",0.07107023411,"",0.2316],
+  ["CABARRUS",0.05434662543,"",0.1514],
+  ["CHEROKEE",0.05084745763,"",0.0759],
+  ["HAYWOOD",0.05025125628,"",0.1971],
+  ["MCDOWELL",0.04427083333,"",0.2150],
+  ["HENDERSON",0.03378378378,"cut",0.0992],
+  ["RANDOLPH",0.02467035304,"",0.3452],
+  ["CURRITUCK",0.02058823529,"",0.3558],
+  ["ALLEGHANY",0.02040816327,"",0.0900],
+  ["CARTERET",0.01379310345,"",0.1394],
+  ["CASWELL",0.01205727204,"",0.2068],
+  ["JOHNSTON",0.003883710608,"cut",0.2554],
+  ["AVERY",0,"",0.1466],
+  ["DURHAM",-0.02475775721,"",0.1791],
+  ["YANCEY",-0.02857142857,"",0.0601],
+  ["FRANKLIN",-0.03059689015,"",0.3271],
+  ["DARE",-0.04149377593,"",0.2889],
+  ["NASH",-0.04356665699,"cut",0.0614],
+  ["HOKE",-0.04444057163,"",0.1874],
+  ["CHATHAM",-0.05062325108,"",0.1420],
+  ["ALAMANCE",-0.0527098831,"cut",0.0220],
+  ["HYDE",-0.05555555556,"",0.0528],
+  ["PITT",-0.06426480075,"",0.0923],
+  ["HARNETT",-0.06454518163,"",0.1412],
+  ["GUILFORD",-0.07090232359,"",-0.0364],
+  ["ROCKINGHAM",-0.07436366661,"",0.0282],
+  ["PERSON",-0.07624493686,"",0.0704],
+  ["CLEVELAND",-0.07766323024,"",0.3621],
+  ["GASTON",-0.07829476653,"cut",0.1284],
+  ["UNION",-0.0786622213,"",0.2003],
+  ["STOKES",-0.07911392405,"",0.1198],
+  ["WAKE",-0.08435387479,"",0.0588],
+  ["BURKE",-0.08981380066,"",0.1303],
+  ["DAVIE",-0.09343936382,"",0.1196],
+  ["MECKLENBURG",-0.09832828144,"cut",0.0516],
+  ["VANCE",-0.1031291854,"",0.0331],
+  ["GATES",-0.1048321048,"",0.2064],
+  ["SURRY",-0.1061093248,"",0.1058],
+  ["CUMBERLAND",-0.1063447632,"",0.0611],
+  ["BUNCOMBE",-0.1090747331,"",0.1247],
+  ["ONSLOW",-0.1103651987,"cut",0.1799],
+  ["WARREN",-0.110982659,"",-0.0125],
+  ["GRANVILLE",-0.1126340073,"",0.1617],
+  ["ALEXANDER",-0.113345521,"",0.3109],
+  ["CAMDEN",-0.115530303,"",0.1751],
+  ["LINCOLN",-0.1163675911,"",0.2684],
+  ["ORANGE",-0.1169105048,"",0.0821],
+  ["DUPLIN",-0.117083947,"",0.2445],
+  ["CRAVEN",-0.117085863,"cut",0.1176],
+  ["RICHMOND",-0.12181941,"",0.1622],
+  ["STANLY",-0.1264044944,"",0.1683],
+  ["LENOIR",-0.1312798363,"",0.0493],
+  ["EDGECOMBE",-0.1321434288,"",0.0323],
+  ["FORSYTH",-0.1410632176,"",-0.0743],
+  ["WILSON",-0.144295302,"",0.0059],
+  ["HERTFORD",-0.1445600347,"",0.0865],
+  ["PENDER",-0.1445988092,"",0.1856],
+  ["LEE",-0.1473684211,"",0.0703],
+  ["WAYNE",-0.1519576265,"cut",0.0185],
+  ["MARTIN",-0.1524585394,"",0.1464],
+  ["IREDELL",-0.152931181,"",0.0949],
+  ["SAMPSON",-0.1549904861,"cut",0.1722],
+  ["PERQUIMANS",-0.1558685446,"",0.0942],
+  ["SCOTLAND",-0.1572470374,"",0.0393],
+  ["WASHINGTON",-0.1605215827,"",0.0255],
+  ["DAVIDSON",-0.1608796296,"",0.1042],
+  ["BRUNSWICK",-0.1683070866,"cut",0.2414],
+  ["BEAUFORT",-0.1721773206,"",0.0889],
+  ["JONES",-0.1756046267,"",0.0928],
+  ["CATAWBA",-0.1787317073,"",0.1945],
+  ["TYRRELL",-0.1797752809,"",0.0681],
+  ["BERTIE",-0.1867080424,"",0.0069],
+  ["GREENE",-0.187250996,"",0.0253],
+  ["WILKES",-0.1903073286,"",0.0945],
+  ["ROWAN",-0.198480283,"cut",0.1286],
+  ["CHOWAN",-0.1992903607,"",0.0311],
+  ["HALIFAX",-0.2071709135,"",0.1322],
+  ["PAMLICO",-0.2100098135,"",0.0461],
+  ["RUTHERFORD",-0.2119258662,"",0.1289],
+  ["MOORE",-0.2146151979,"",-0.0113],
+  ["PASQUOTANK",-0.2202178961,"",0.0092],
+  ["ANSON",-0.227478076,"",0.0101],
+  ["NEW HANOVER",-0.2348544799,"",0.1004],
+  ["NORTHAMPTON",-0.2385972954,"cut",0.0331],
+  ["CLAY",-0.25,"",0.0134],
+  ["POLK",-0.2511737089,"cut",-0.0068],
+  ["BLADEN",-0.2528187337,"",0.0402],
+  ["TRANSYLVANIA",-0.2565320665,"",0.0679],
+  ["COLUMBUS",-0.2602912098,"",0.1184],
+  ["ROBESON",-0.2608252097,"cut",0.2606],
+  ["CALDWELL",-0.2638398115,"",0.0688],
+  ["MACON",-0.2926829268,"",0.0892],
+  ["SWAIN",-0.625,"",0.2051]
+];
+
+
+    buildGraph1();
+
+
+    function buildGraph1() {
+      var svg = d3.select('#chartContainer')
+      .append('svg')
+          .attr('width', '100%')
+          .attr('height', '100%')
+          .attr('viewBox', '0 0 ' + size + ' ' + size);
+
+        var yScale = d3.scaleLinear()
+                 .domain([0, d3.max(dataset, function(d) { return d[1]; })])
+                 .range([0, h/2]);
+
+        var yAxisScale = d3.scaleLinear()
+                 .domain([(0-d3.max(dataset, function(d) { return d[1]; })), d3.max(dataset, function(d) { return d[1]; })])
+                 .range([h, 0]);
+
+        var xMargin = 1;
+
+        var leftScale = d3.scaleLinear()
+          .domain([0,size])
+          .range([leftMargin,size]);
+
+          var tip = d3.tip()
+           .attr('class', 'd3-tip')
+           .offset([-10, 0])
+           .html(function(d) {
+             return d[0] + " COUNTY <br />" + d[1];
+           });
+
+         svg.call(tip);
+
+  			svg.selectAll("rect")
+  			   .data(dataset)
+  			   .enter()
+  			   .append("rect")
+           .attr("fill","#B22042")
+           .attr("class",function(d,i){
+             if (d[1]<=0) {
+               if (d[2]=="cut") {
+                 return("cut decrease")
+               }
+               else {
+                 return ("decrease");
+               }
+
+             }
+              else {
+                if (d[2]=="cut") {
+                  return("cut increase")
+                }
+                else {
+                  return ("increase");
+                }
+              }
+           })
+           .attr("x", function(d, i) {
+             return leftScale(i*(w/dataset.length));
+  			   })
+  			   .attr("y", function(d,i) {
+             if (d[1]<=0) {
+               return (w/2);
+             }
+              else {
+                return ((w/2)-yScale(d[1]));
+              }
+           })
+  			   .attr("width", function(d,i) {
+             return ((w-leftMargin)/dataset.length-xMargin);
+           })
+  			   .attr("height", function(d,i) {
+             return yScale(Math.abs(d[1]));
+           })
+           .on('mouseover', tip.show)
+           .on('mouseout', tip.hide);
+
+
+
+
+
+
+           // Y AXIS
+
+           svg.append("g")
+              .attr("transform", "translate("+(leftMargin-5)+",0)")
+              .call(d3.axisLeft(yAxisScale)
+                .tickFormat(d3.format("+.0%")));
+
+            // TITLE
+
+            svg.append("text")
+              .attr("class","chartTitle")
+              .attr("x", (w / 2))
+              .attr("y", 40)
+              .attr("text-anchor", "middle")
+              .style("font-size", "16px")
+              .text("Black early voters decreased in 81 of 100 counties.");
+
+              svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle")
+                .attr("cy",h/2)
+                .attr("r",3)
+                .attr("fill","rgba(0,0,0,0)")
+                .attr("cx",function(d,i){
+                  return (leftScale(i*(w/dataset.length))+((w-leftMargin)/dataset.length-xMargin)/2);
+                });
+
+              svg.selectAll("circle")
+                .transition()
+                .delay(5500)
+                .duration(3000)
+                .attr("fill","black")
+                .attr("cy",function(d,i){
+                  return(h/2 - yScale(d[3]))
+                })
+
+            beginHL();
+    }
+
+    function beginHL(){
+      d3.selectAll(".decrease")
+      .transition()
+      .delay(500)
+      .duration(500)
+      .attr("fill", "#FFF22E");
+      d3.selectAll("rect")
+      .transition()
+      .delay(2500)
+      .duration(500)
+      .attr("fill", "#b22042");
+      d3.selectAll(".cut")
+      .transition()
+      .delay(3500)
+      .duration(500)
+      .attr("fill", "#FFF22E");
+      d3.selectAll(".chartTitle")
+      .transition()
+      .delay(3500)
+      .duration(500)
+      .text("17 counties cut down to only one polling place for the first week.");
+      d3.selectAll(".chartTitle")
+      .transition()
+      .delay(5500)
+      .duration(500)
+      .text("At the same time, white early voting increased nearly everywhere.");
+
+    }
+
+
+		</script>
+	</body>
+</html>

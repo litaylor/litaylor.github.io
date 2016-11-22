@@ -1,0 +1,261 @@
+<!doctype html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Load jQuery -->
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Load Swiper stuff -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
+
+  <!-- Load c3.css -->
+  <link href="c3/c3.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Load d3.js and c3.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="https://d3js.org/d3-axis.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+  <script src="c3/c3.min.js"></script>
+
+
+  <style>
+    body,html{
+      /*overflow: hidden;*/
+    }
+    .content{
+      position: absolute;
+      top:0px;
+      left:0px;
+      width: 100%;
+      height:100%;
+    }
+    .chartSkinny{
+      /*max-width: 720px;*/
+      width:100%;
+      margin:0 auto;
+      position: absolute;
+      top:240px;
+      /*left:0px;*/
+      bottom:0px;
+    }
+    .c3-line, .c3-target.c3-focused path.c3-line, .c3-target.c3-focused path.c3-step{
+      stroke-width: 4px;
+    }
+    .c3-legend-background{
+      opacity: 0;
+    }
+    .swiper-container{
+      position:absolute;
+      z-index: 100;
+      background: none;
+      height:100%;
+      width: 100%;
+      top:0px;
+      left:0px;
+      /*height:300px;*/
+    }
+  </style>
+
+</head>
+<html>
+
+  <div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">slide 0</div>
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+    </div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+
+  <div class="content">
+    <div id="c3Line" class="chartStyle chartSkinny"></div>
+  </div>
+
+  <script>
+    var chartEarly;
+    var formatter;
+    var formatterThousands = d3.format("+,");
+    function formatterPct(d,fType) {
+      if (fType=='pct') {
+        if (d>=0) {
+          return "+"+d + '%';
+        }
+        else {
+          return d + '%';
+        }
+      }
+      else {
+        return formatterThousands(d);
+      }
+    }
+
+
+    function slideIt(dir,n) {
+      switch (n) {
+        case 1:
+          if (dir=='prev') {
+            chartEarly.load({
+              unload: ['ASIAN','INDIAN AMERICAN or ALASKA NATIVE','TWO or MORE RACES','BLACK or AFRICAN AMERICAN','OTHER / UNDESIGNATED']
+            });
+          }
+          fType='pct';
+          chartEarly = c3.generate({
+            bindto: '#c3Line',
+            data: { // PERCENTAGE CHANGE IN TOTAL ONE-STOP EARLY VOTES, 2012-2016
+              columns: [
+                ['WHITE', 0, 10.40]
+              ],
+              labels:false
+            },
+            grid: {
+                y: {
+                    lines: [{value: 0}]
+                }
+            },
+            tooltip: {
+                grouped: false // Default true
+            },
+            axis: {
+              x: {
+                type: 'category',
+                categories: ['2012 early voting', '2016 early voting']
+              },
+              y : {
+                tick : {
+                  format: function(d){
+                    return formatterPct(d,fType);
+                  }
+                }
+              }
+            },
+            legend:{
+              position: 'inset'
+            },
+            point: {
+              r: 3
+            },
+            transition:{
+              duration: 1000
+            },
+            oninit: function () {   // From jsfiddle by Masayuki Tanaka
+              this.main.append('rect')
+                  .style('fill', 'white')
+                  .attr('x', 0.5)
+                  .attr('y', -0.5)
+                  .attr('width', this.width)
+                  .attr('height', this.height)
+                .transition().duration(1000)
+                  .attr('x', this.width)
+                  .attr('width', 0)
+                .remove();
+          }
+          });
+
+        break;
+        case 2:
+          if (dir=='prev') {
+            chartEarly.load({
+              unload: ['INDIAN AMERICAN or ALASKA NATIVE','TWO or MORE RACES','BLACK or AFRICAN AMERICAN','OTHER / UNDESIGNATED']
+            });
+          }
+          else{
+            chartEarly.load({
+              columns: [
+                ['WHITE', 0, 10.40],
+                ['ASIAN', 0, 47.60]
+              ]
+            });
+          }
+        break;
+        case 3:
+          if (dir=='prev') {
+            chartEarly.load({
+              unload: ['TWO or MORE RACES','BLACK or AFRICAN AMERICAN','OTHER / UNDESIGNATED']
+            });
+          }
+          else {
+            chartEarly.load({
+              columns: [
+                ['WHITE', 0, 10.40],
+                ['ASIAN', 0, 47.60],
+                ['INDIAN AMERICAN or ALASKA NATIVE', 0, 16.02]
+              ]
+            });
+          }
+        break;
+        case 4:
+          if (dir=='prev') {
+            chartEarly.load({
+              unload: ['BLACK or AFRICAN AMERICAN','OTHER / UNDESIGNATED']
+            });
+          }
+          else {
+            chartEarly.load({
+              columns: [
+                ['WHITE', 0, 10.40],
+                ['ASIAN', 0, 47.60],
+                ['INDIAN AMERICAN or ALASKA NATIVE', 0, 16.02],
+                ['TWO or MORE RACES', 0, 17.65]
+              ]
+            });
+          }
+
+        break;
+        case 5:
+          if (dir=='prev'){
+            chartEarly.load({
+              unload: ['OTHER / UNDESIGNATED']
+            });
+            $(".c3-target-OTHER---UNDESIGNATED").hide();
+
+          }
+
+          chartEarly.load({
+            columns: [
+              ['WHITE', 0, 10.40],
+              ['ASIAN', 0, 47.60],
+              ['INDIAN AMERICAN or ALASKA NATIVE', 0, 16.02],
+              ['TWO or MORE RACES', 0, 17.65],
+              ['BLACK or AFRICAN AMERICAN', 0, -10.46]
+            ]
+          });
+          // chartEarly.flush();
+        break;
+        case 6:
+          fType='int';
+          $(".c3-target-OTHER---UNDESIGNATED").show();
+          chartEarly.load({
+            columns: [
+              ['WHITE', 0, 194604],
+              ['ASIAN', 0, 10610],
+              ['INDIAN AMERICAN or ALASKA NATIVE', 0, 1853],
+              ['TWO or MORE RACES', 0, 2451],
+              ['BLACK or AFRICAN AMERICAN', 0, -79248],
+              ['OTHER / UNDESIGNATED', 0, 49629]
+            ]
+          });
+          // chartEarly.flush();
+        break;
+
+        default:
+
+      }
+      }
+
+
+  </script>
+  <script src="swiper.js"></script>
+
+</html>

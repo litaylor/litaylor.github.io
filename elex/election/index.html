@@ -1,0 +1,94 @@
+<!doctype html>
+<head>
+<title>Election</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <p>Volunteers said they also struggled with informing voters of their rights. Many had heard of the law requiring a state identification to vote without knowing the law had been struck down</p>
+  <p>That nearly included one voter from Elizabeth City.</p>
+  <p>Khalif Williams, a black 22-year-old, voted around 6:30 p.m. on election day. He said he didn't find out he could vote without an ID until just three hours before that.</p>
+  <p>Williams said he was a fan of allowing voting without an ID.</p>
+  <p>&ldquo;It keeps things simple,&rdquo; he said.</p>
+  <p>Paulette Spelman, a retired school teacher of thirty years and mother of eight, was waiting in the parking lot in front of River Road Middle School while her daughter voted inside.</p>
+  <p>She said she voted early to avoid long lines.</p>
+  <p>&ldquo;I can't stand that long,&rdquo; she said.</p>
+  <p>Though she said the poll closures were inconvenient for some, she remained optimistic about voting in North Carolina.</p>
+  <p>&ldquo;I believe in the system,&rdquo; she said.</p>
+
+  <div id="chart1" style="height: 400px; margin: 0 auto"></div>
+
+
+
+  <script>
+  $(function () {
+    Highcharts.chart('chart1', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Early votes by race'
+        },
+        subtitle: {
+            text: 'Source: Michael McDonald'
+        },
+        colors: [
+          '#FFF22E','#B22042'
+        ],
+        xAxis: {
+            categories: ['Total', 'White', 'Black','Other'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Early Votes'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value / 1000;
+                }
+            }
+        },
+        tooltip: {
+            split: true,
+            valueSuffix: ' early votes'
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+            name: '2012',
+            data: [2757476, 1858539, 755548, 143389]
+        }, {
+            name: '2016',
+            data: [3102834,2182198, 687226, 233410]
+        }]
+    });
+  });
+  </script>
+
+
+</body>
+
+
+
+</html>
