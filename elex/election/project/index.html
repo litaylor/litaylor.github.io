@@ -130,6 +130,12 @@
     p {
       padding-left: 6px; padding-right: 6px;
     }
+    .cardLeft{
+      text-align: left;
+      height:100%;
+      pointer-events: all;
+      overflow-y: scroll;
+    }
     /*['FF1E54','007AFF','84FF00','FF5D00','FFD80D','rgb(140, 86, 75)']*/
   </style>
 
@@ -142,14 +148,14 @@
         <!-- Slides -->
         <div class="swiper-slide fullSlide">
           <div class="card">
-            <h1>Early voting increased for everyone but black voters in N.C.</h1>
+            <h1>Early voting increased for everyone but Black voters in N.C.</h1>
             <p>In a state where one-stop early voting became the favorite method for many, a divide emerged along racial lines. </p>
             <p><span class="msgMob">Swipe</span><span class="msgDesk">Scroll down</span> or hit "NEXT" to begin.</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <p>2016 saw a surge in early voting in North Carolina, for most of the state's voting population. According to the state's elections board's data on "one-stop," in-person, early voting, 10 percent more early ballots came from <span class="highlight hi1">white</span> voters than in 2012 ...</p>
+            <p>2016 saw a surge in early voting for most of North Carolina's voting population. According to the state's elections board's data on "one-stop," in-person, early voting, 10 percent more early ballots came from <span class="highlight hi1">white</span> voters than in 2012 ...</p>
           </div>
         </div>
         <div class="swiper-slide">
@@ -164,30 +170,44 @@
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <p>and other racial minorities. However,</p>
+            <p>and other racial minorities, except for</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <p><span class="highlight hi5">black</span> early voters dropped sharply. No other measured racial group turned out fewer early voters than four years ago.</p>
+            <p><span class="highlight hi5">Black</span> early voters, who dropped sharply. No other measured racial group turned out fewer early voters than four years ago.</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <p>The total vote count shows the size of the disparity. Nearly <span class="highlight hi5">80,000 fewer black people</span> in North Carolina voted early than in the previous election, while the state as a whole flocked to early polls. At the same time, turnout was nearly <span class="highlight hi1">195,000 higher among white voters</span>.</p>
+            <p>The total vote count for 2016 shows the size of the disparity. Nearly <span class="highlight hi5">80,000 fewer Black people</span> in North Carolina voted early than in 2012, while the state as a whole saw an increase. At the same time, early turnout was nearly <span class="highlight hi1">195,000 higher among white voters</span>.</p>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="card">
-            <p>The drop was across the board. Eighty-one of 100 counties saw black early voting turnout fall. (Graham County, which increased from 0 to 1 black voter, is not shown.)</p>
+            <p>The drop was across the board. Eighty-one of 100 counties saw Black early voting turnout fall. (Graham County, which increased from 0 to 1 Black voter, is not shown.)</p>
           </div>
         </div>
         <div class="swiper-slide fullSlide">
           <div class="card">
-            <p>According to Michael McDonald, a University of Florida professor who runs an elections data service, North Carolina stands out. He <a href="https://twitter.com/ElectProject/status/795378059570544645">found</a> that in other southern states that collect data on the race of early voters, black turnout remained steady.</p>
+            <p>According to Michael McDonald, a University of Florida professor who runs an elections data service, North Carolina stands out. He <a href="https://twitter.com/ElectProject/status/795378059570544645">found</a> that in other southern states collecting data on the race of early voters, Black turnout remained steady.</p>
           </div>
           <div id = "otherStates">xx</div>
         </div>
+        <div class="swiper-slide fullSlide">
+          <div class="card cardLeft">
+            <p>Part of the drop in the Black share of early voters may be explained by cuts to early polling places. HB 589, the law overturned by a federal court for what it called a "surgical" targeting of Black voters, would have allowed counties to cut the first week of early voting. Without the law in place, each county was required to maintain at least one open location for that week.</p>
+            <p>Seventeen counties then closed all but the one required location for the first seven days. The blog Insightus found turnout in those counties <a href="http://www.insight-us.org/blog/super-suppressors-the-17-north-carolina-counties-that-are-strangling-early-voting-to-death/">initially trailed</a>&nbsp;the rest of the state dramatically.</p>
+            <p>When the early voting period concluded, a press release from the North Carolina Republican party <a href="http://us2.campaign-archive2.com/?u=f3100bc5464cbba2f472ddf2c&amp;id=e4b9a8fb19">noted</a>&nbsp;the drop in Black&nbsp;turnout as an "encouraging" trend.</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+            <p>ASDLKJFASL ADSLFAJS</p>
+          </div>
+        </div>
+
     </div>
 
   </div>
@@ -614,7 +634,7 @@
                 axis: {
                   x: {
                     type: 'category',
-                    categories: ['% change, 2012 - 2016 black one-stop early voting by county']
+                    categories: ['% change, 2012 - 2016 Black one-stop early voting by county']
                   },
                   y : {
                     tick : {
@@ -687,7 +707,7 @@
           axis: {
             x: {
               type: 'category',
-              categories: ['% change, 2012 - 2016 black early voting by state']
+              categories: ['% change, 2012 - 2016 Black early voting by state']
             },
             y : {
               tick : {
