@@ -42,11 +42,22 @@ p {
   font-size: 20px; line-height: 1.45; padding-bottom:12px;
 }
 
+.wrap {
+  border-top: thin solid rgba(0,0,0,0.1);
+  border-bottom: thin solid rgba(0,0,0,0.1);
+  padding: 0px;
+}
+
 @media(max-width:768px) {
   .extra{
     position: absolute !important;
     top: -9999px !important;
    left: -9999px !important;
+  }
+  .wrap{
+    max-height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 12px;
   }
 }
 
@@ -75,7 +86,7 @@ p {
     line-height: 1.9; padding-bottom:19px;
   }
   .story{
-    border-right: thin solid rgba(0,0,0,0.1)
+    border-right: thin solid rgba(0,0,0,0.1);
   }
   .extra{
     position: absolute;
