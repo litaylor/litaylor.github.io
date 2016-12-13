@@ -10,40 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="style.css" rel="stylesheet"/>
-    <script>
 
-      $(document).ready(function(){
-        lineUp();
-      });
-      $(window).resize(function(){
-        lineUp();
-      });
-
-      function lineUp() {
-        if($('.signal').css("background-color") == "rgb(255, 0, 0)") {
-          $('.anchor').each(function(){
-            contentName = "."+$(this).attr('class').split('-')[1];
-            position=$(this).position();
-            stylePos=(position.top)+"px";
-            $(contentName).css({
-              'top':stylePos
-            });
-          });
-          $('.extra, .extra *').show();
-        }
-
-        else {
-          $('.extra, .extra *').show();
-          $('.anchor').each(function(){
-            contentName = "."+$(this).attr('class').split('-')[1];
-            $(this).html($(contentName).html());
-          });
-          $('.extra, .extra *').hide();
-        }
-
-
-      }
-    </script>
   </head>
   <body>
     <div class="container">
@@ -113,6 +80,37 @@
     </div>
     <div class="signal" style="display:none;"></div>
 
+    <script>
+
+
+
+        $('.anchor').each(function(){
+          contentName = "."+$(this).attr('class').split('-')[1];
+          $(this).html($(contentName).html());
+          $('.extra, .extra *').show();
+          $('.anchor, .anchor *').show();
+        if($('.signal').css("background-color") == "rgb(255, 0, 0)") {
+          // $('.anchor').each(function(){
+          //   contentName = "."+$(this).attr('class').split('-')[1];
+            position=$(this).position();
+            stylePos=(position.top)+"px";
+            $(contentName).css({
+              'top':stylePos
+            });
+
+
+          $('.anchor, .anchor *').hide();
+        }
+
+        else {
+          $('.extra, .extra *').hide();
+
+        }
+
+        });
+
+
+    </script>
 
   </body>
 </html>
