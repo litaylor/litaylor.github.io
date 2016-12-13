@@ -62,7 +62,7 @@ p {
   font-weight:900;
   font-size:14px;
   width:100%;
-  overflow-x:hidden;
+  /*overflow-x:hidden;*/
   background-color: rgba(0,0,0,0.1);
   padding:5px;
 }
