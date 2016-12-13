@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Load jQuery -->
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <!-- Load Swiper stuff -->
 
@@ -27,12 +27,22 @@
       overflow: hidden;
       font-family: 'Merriweather Sans';
     }
+    body{
+      background-color: rgb(51,51,51);
+      color:#ffffff;
+    }
     .content{
       position: absolute;
       top:0px;
       left:0px;
       width: 100%;
       height:100%;
+    }
+    .c3 text{
+      fill:#ffffff;
+    }
+    .c3-tooltip td{
+      color: black;
     }
     .chartSkinny{
       max-width: 720px;
@@ -42,7 +52,7 @@
       top:240px;
       /*left:0px;*/
       bottom:48px;
-      background-color: #ffffff;
+      background-color: rgba(0,0,0,0);
     }
     .c3-line, .c3-target.c3-focused path.c3-line, .c3-target.c3-focused path.c3-step{
       stroke-width: 4px;
@@ -86,12 +96,12 @@
     }
     .buttonUp{
       left:0px;
-      background-color: #FFD80D;
-      display: table;
+      background-color: rgba(255,255,255,0.5);
+      display: none;
     }
     .buttonDown{
       right:0px;
-      background-color: #FF1E54;
+      background-color: rgba(255,255,255,0.1);
       color: white;
       display: table;
     }
@@ -121,15 +131,27 @@
       border-bottom-color: #FFD80D;
     }
     .fullSlide{
-      background-color: #ffffff;
+      background-color: rgb(51,51,51);
       height: 100%;
       /*padding-bottom: 48px;*/
     }
     #otherStates{
-      top:12px;
+      top:240px;
+      bottom:0px;
+      /*top:12px;
       max-width: 720px;
-      max-height: 400px;
-      padding-bottom: 48px;
+      bottom: 100px;*/
+      /*height:100%;*/
+      /*padding-bottom: 48px;*/
+      /*max-height: 100%;*/
+      /*margin: 0 auto;*/
+    }
+    .otherWrap{
+      position: absolute;
+      top:0px;
+      bottom: 48px;
+      max-width: 720px;
+      /*height: 100%;*/
       margin: 0 auto;
     }
     svg {
@@ -141,7 +163,7 @@
     .cardLeft{
       text-align: left;
       height:100%;
-      background-color: #ffffff;
+      background-color: rgb(51,51,51);
       pointer-events: all;
       display: table;
     }
@@ -158,6 +180,15 @@
         padding:0px;
       }
     }
+    @media (min-width:769px){
+      .chartSkinny{
+        top:120px;
+      }
+    }
+    .firstSlide{
+      background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)), url(trouble.jpg);
+      background-size: cover;
+    }
   </style>
 
 </head>
@@ -167,7 +198,7 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide fullSlide">
+        <div class="swiper-slide fullSlide firstSlide">
           <div class="card" style="height:100%; display:table;">
             <div style="display:table-cell;vertical-align:middle;">
               <h1>
@@ -218,10 +249,13 @@
           </div>
         </div>
         <div class="swiper-slide fullSlide">
-          <div class="card">
+          <div class="card" style="height:100%; margin-bottom: 48px;">
             <p>According to Michael McDonald, a University of Florida professor who runs an elections data service, North Carolina stands out. He <a href="https://twitter.com/ElectProject/status/795378059570544645">found</a> that in other southern states collecting data on the race of early voters, Black turnout remained steady.</p>
+            <div class="otherWrap">
+              <div id = "otherStates">xx</div>
+            </div>
           </div>
-          <div id = "otherStates">xx</div>
+
         </div>
         <div class="swiper-slide">
           <div class="card cardLeft">
@@ -300,8 +334,16 @@
 
           </div>
         </div>
+        <div class="swiper-slide">
+          <div class="card cardLeft">
+            <div class="clWrap">
+              <p>When the dust had settled, voters narrowly removed incumbent Republican Gov. Pat McCrory, while the GOP retained its senator, Richard Burr, and its supermajority in the state legislature.</p>
+              <p>On Nov. 18, U.S. President-elect Donald Trump, who carried the state, pledged to nominate Alabama Sen. Jeff Sessions as Secretary of State. Sessions was blocked from becoming a federal judge in 1986 after accusations of racial prejudice and questions surrounding his role in a voter fraud case brought against black community organizers.</p>
+              <p>Nearly three weeks after election day, Trump claimed that millions had voted illegally for Democratic candidate Hillary Clinton, which Politifact rated a "pants on fire" falsehood.</p>
+            </div>
 
-
+          </div>
+        </div>
     </div>
     <div class="swiper-pagination swiper-pagination1"></div>
   </div>
@@ -353,9 +395,15 @@
             });
           }
           else {
+            $(".buttonUp").css({
+              'display':'table'
+            });
             fType='pct';
             chartEarly = c3.generate({
               bindto: '#c3Line',
+              size:{
+                height:undefined
+              },
               data: { // PERCENTAGE CHANGE IN TOTAL ONE-STOP EARLY VOTES, 2012-2016
                 columns: [
                   ['WHITE', 0, 10.40]
@@ -397,7 +445,7 @@
               },
               oninit: function () {   // From jsfiddle by Masayuki Tanaka
                 this.main.append('rect')
-                    .style('fill', 'white')
+                    .style('fill', 'rgba(0,0,0,0)')
                     .attr('x', 0.5)
                     .attr('y', -0.5)
                     .attr('width', this.width)
@@ -507,6 +555,9 @@
             $("#c3Bar").fadeIn(300, function(){
               chartCounty = c3.generate({
                 bindto: '#c3Bar',
+                size:{
+                  height:undefined
+                },
                 data: { // COUNTY COUNTY COUNTY
                   columns: [
                     ["ALAMANCE",-0.0527098831],
@@ -754,7 +805,7 @@
                 },
                 oninit: function () {   // From jsfiddle by Masayuki Tanaka
                   this.main.append('rect')
-                      .style('fill', 'white')
+                      .style('fill', 'rgba(0,0,0,0)')
                       .attr('x', 0.5)
                       .attr('y', -0.5)
                       .attr('width', this.width)
@@ -770,6 +821,14 @@
 
 
         break;
+        case 13:
+        $(".buttonDown").css({
+          'display':'table'
+        });
+        break;
+        case 14:
+          $(".buttonDown").hide();
+        break;
 
         default:
 
@@ -779,6 +838,9 @@
       $("document").ready(function(){
         var states = c3.generate({
           bindto: '#otherStates',
+          size:{
+            height:undefined
+          },
           data: { // COUNTY COUNTY COUNTY
             columns: [
               ["Florida",.023],
