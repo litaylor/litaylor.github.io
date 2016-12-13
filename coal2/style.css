@@ -15,15 +15,16 @@
 body {
   font-family: 'Playfair Display';
   font-size:18px;
+  overflow-x: hidden;
 }
 
 
 
 .headPic{
-  background-image: url(1.png);
-  background-size: auto 100%;
+  background-image: url(bottleanimation.gif);
+  background-size: cover;
   background-position: center bottom;
-  height: 200px;
+  height: 300px;
 }
 
 h1 {
@@ -54,7 +55,7 @@ p {
     top: -9999px !important;
    left: -9999px !important;
   }
-  .wrap{
+  .wrap:not(".graphic"){
     max-height: 400px;
     overflow-y: scroll;
     margin-bottom: 12px;

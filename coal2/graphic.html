@@ -1,0 +1,67 @@
+<!doctype html>
+<body>
+<canvas id="canvas1" width="9350" height="200"></canvas>
+<script>
+  var can = document.getElementById('canvas1');
+  var ctx = can.getContext('2d');
+
+  make_base();
+
+  function make_base()
+  {
+    base_image = new Image();
+    base_image.src = 'bottle.svg';
+    base_image2 = new Image();
+    base_image2.src = 'bottle2.svg';
+    base_image.onload = function(){
+      height=200;
+      margin=3;
+      spacing=5;
+      ratio=2.5;
+      drawHeight=height-(margin*2);
+      offset=0;
+
+      for (k=0;k<36;k++){
+        counter=0;
+        for (j=offset;j<(offset+4);j++) {
+          for (i=0;i<5;i++) {
+            if (counter<17) {
+              h = (drawHeight/5);
+              ctx.drawImage(base_image, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+              counter++;
+            }
+
+          }
+        }
+        offset+=5;
+        counter=0;
+        for (j=offset;j<(offset+4);j++) {
+          for (i=0;i<5;i++) {
+            if (counter<17) {
+              h = (drawHeight/5);
+              ctx.drawImage(base_image, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+              counter++;
+            }
+
+          }
+        }
+        offset+=5;
+        counter=0;
+        for (j=offset;j<(offset+4);j++) {
+          for (i=0;i<5;i++) {
+            if (counter<16) {
+              h = (drawHeight/5);
+              ctx.drawImage(base_image2, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+              counter++;
+            }
+
+          }
+        }
+        offset+=5;
+      }
+
+
+    }
+  }
+</script>
+</body>

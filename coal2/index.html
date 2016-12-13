@@ -80,6 +80,80 @@
           <p>Tim Gause, the Charlotte region director for government and community relations at Duke Energy, spoke about Brown&rsquo;s problem and her feelings about the situation. Then, according to Brown, Gause said by giving her family water, the company was taking a risk.</p>
           <p>&ldquo;I quickly let him know what my thoughts on risk were. And that is what about the potential health risk of my children who have been and are being exposed to cancer-causing water,&rdquo; Brown said. &ldquo;We&rsquo;re over here worried about the water that we&rsquo;re being exposed to and wondering is it safe for our children to take a bubble bath, that&rsquo;s the difference in how you explain risk and I explain risk.&rdquo;</p>
           <p>Brown said she told Gause he had until Monday morning, May 11, to provide her family with bottled water. And on Monday morning, it was delivered.</p>
+          <div class="wrap graphic" style="max-height:none;margin-bottom:19px;">
+            <h2>How much water does Duke Energy deliver every month?</h2>
+            <h3>by Langston Taylor</h3>
+            <div class="canvas" style="float:left;width:1000px;overflow-x:scroll">
+              <div>
+              <canvas style="padding-bottom:10px;" id="canvas1" width="9350" height="200"></canvas>
+              <script>
+                var can = document.getElementById('canvas1');
+                var ctx = can.getContext('2d');
+
+                make_base();
+
+                function make_base()
+                {
+                  base_image = new Image();
+                  base_image.src = 'bottle.svg';
+                  base_image2 = new Image();
+                  base_image2.src = 'bottle2.svg';
+                  base_image.onload = function(){
+                    height=200;
+                    margin=3;
+                    spacing=5;
+                    ratio=2.5;
+                    drawHeight=height-(margin*2);
+                    offset=0;
+
+                    for (k=0;k<36;k++){
+                      counter=0;
+                      for (j=offset;j<(offset+4);j++) {
+                        for (i=0;i<5;i++) {
+                          if (counter<17) {
+                            h = (drawHeight/5);
+                            ctx.drawImage(base_image, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+                            counter++;
+                          }
+
+                        }
+                      }
+                      offset+=5;
+                      counter=0;
+                      for (j=offset;j<(offset+4);j++) {
+                        for (i=0;i<5;i++) {
+                          if (counter<17) {
+                            h = (drawHeight/5);
+                            ctx.drawImage(base_image, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+                            counter++;
+                          }
+
+                        }
+                      }
+                      offset+=5;
+                      counter=0;
+                      for (j=offset;j<(offset+4);j++) {
+                        for (i=0;i<5;i++) {
+                          if (counter<16) {
+                            h = (drawHeight/5);
+                            ctx.drawImage(base_image2, j*(margin+(h-margin)/ratio), (i*h), ((h-margin)/ratio), h-margin);
+                            counter++;
+                          }
+
+                        }
+                      }
+                      offset+=5;
+                    }
+
+
+                  }
+                }
+              </script>
+
+            </div>
+          </div>
+          Each bottle represents one family's monthly supply of water (more than 16 cases). Duke Energy provides about 10,000 cases to about 600 households at a cost of $145,000 a month, according to spokeswoman Erin Culbert.
+          </div>
           <p>Brown has remained an outspoken advocate for her community and those affected by coal ash. She started by hosting community meetings to educate the community on the issue of coal ash. In these meetings, they got information from various riverkeepers, got feedback from affected community members, and even got Duke Energy to speak with them.</p>
           <p>Duke Energy said their facilities haven&rsquo;t had any impact on neighbors&rsquo; wells. Culbert said the thorough testing completed in late 2015 confirmed this assertion.</p>
           <p>&ldquo;We continued to see no indication that our ash basins were impacting their wells, and that still remains true today,&rdquo; she said.</p>
@@ -103,7 +177,7 @@
             <div class="wrap">
               <h2>Graphic: Duke Energy's response to the spill</h2>
               <h3>by Sharon Nunn</h2>
-              <a href="timeline.png" target="_blank"><img class="img-responsive" src="timeline.png"/></a>
+              <a href="timeline2.png" target="_blank"><img class="img-responsive" src="timeline2.png"/></a>
             </div>
           </div>
           <div class="extra audio">
