@@ -33,6 +33,7 @@
         }
 
         else {
+          $('.extra, .extra *').show();
           $('.anchor').each(function(){
             contentName = "."+$(this).attr('class').split('-')[1];
             $(this).html($(contentName).html());
