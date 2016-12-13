@@ -58,9 +58,11 @@ p {
     font-style: italic;
 }
 
-.caption {
+.graphic {
   font-weight:900;
   font-size:14px;
+  width:100%;
+  overflow-x:hidden;
 }
 
 @media(max-width:768px) {
