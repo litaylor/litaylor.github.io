@@ -44,10 +44,30 @@ p {
 }
 
 .wrap {
-  border-top: thin solid rgba(0,0,0,0.1);
-  border-bottom: thin solid rgba(0,0,0,0.1);
+  border-top: thick solid rgba(0,0,0,0.1);
+  border-bottom: thick solid rgba(0,0,0,0.1);
   padding: 0px;
+  /*background-color: rgba(0,0,0,0.1);*/
 }
+
+.graphic h2 {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 1.2;
+    color: #0064ff;
+    font-style: italic;
+}
+
+.graphic {
+  font-weight:900;
+  font-size:14px;
+  width:100%;
+  overflow-x:hidden;
+  /*background-color: rgba(0,0,0,0.1);*/
+  color:#0064ff;
+  padding:5px;
+}
+
 
 @media(max-width:768px) {
   .extra{
@@ -55,7 +75,7 @@ p {
     top: -9999px !important;
    left: -9999px !important;
   }
-  .wrap:not(".graphic"){
+  .wrap{
     max-height: 400px;
     overflow-y: scroll;
     margin-bottom: 12px;
