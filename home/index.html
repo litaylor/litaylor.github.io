@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Langston Taylor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+    <script src="vendors/jquery.easings.min.js"></script>
+
+
+    <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
+    <script type="text/javascript" src="vendors/scrolloverflow.min.js"></script>
+
+    <script type="text/javascript" src="jquery.fullPage.js"></script>
+  </head>
+  <body>
+
+    <div id="fullpage">
+    	<div class="section intro">
+        <h1>Langston Taylor</h1>
+        <h2>I write words. Sometimes, they're in code.</h2>
+        <div class="description">
+          <p>employmentxyxyx University of North Carolina at Chapel Hill School of Media and Journalism</p>
+          <p><a href="http://twitter.com/LangstonITaylor" target="_blank">Twitter: @LangstonITaylor</a></p>
+          <p><a href="https://github.com/litaylor" target="_blank"></a>Github: litaylor</p>
+          <p><a href="assets/langston_taylor_resume_2017.pdf" target="_blank">My Resume</a></p>
+        </div>
+      </div>
+    	<div class="section writing">
+        <h1>Reporting and Commentary</h1>
+        <h2>investigativexyxyxy or quickycycy, fairxyxyx and boldxyxy</h2>
+      </div>
+    	<div class="section">
+        <h1>Visual Design</h1>
+        <h2>jqueryxyxy or illustratorxyxy, informativexyx and creativexyxy</h2>
+      </div>
+    	<div class="section fp-auto-height">
+        <h3>Footer</h3>
+      </div>
+    </div>
+
+    <!-- Initialize FullPage -->
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#fullpage').fullpage({
+          autoScrolling: false,
+          sectionsColor : ['#ccc', '#fff','#ccc', '#fff','#ccc', '#fff','#ccc', '#fff']
+        });
+      });
+    </script>
+
+    <!-- Hello message -->
+
+    <script type="text/javascript">
+      console.log(
+        "%cHi, my name is Langston Taylor.",
+        "color: #555555; font-size: x-large; font-family: Helvetica, sans-serif;"
+      );
+      console.log(
+        "%cGlad you're looking at my site.",
+        "color: #555555; font-size: x-large; font-family: Helvetica, sans-serif;"
+      );
+      console.log(
+        "%cFeel free to check out more of what I've done on github.com/litaylor",
+        "color: #555555; font-size: x-large; font-family: Helvetica, sans-serif;"
+      );
+    </script>
+
+    <!-- Load Adobe Fonts -->
+
+    <script src="https://use.typekit.net/jyi0vca.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+  </body>
+</html>
