@@ -2,8 +2,11 @@
   /*border: 0.5px solid black;*/
 }
 
-body {
+body,html {
   color: #444444;
+  width: 100%;
+  overflow-x: hidden;
+  margin:0;
 }
 
 .clearfix::after {
@@ -34,11 +37,6 @@ body {
   width: 24%;
   text-align: center;
   padding:20px 0;
-}
-
-.section {
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .description {
@@ -73,7 +71,7 @@ h1,h2,p, ul.links, .subtitle {
   text-align: center;
 }
 
-p {
+p, h4 {
   line-height: 1.6;
 }
 
@@ -112,8 +110,6 @@ li p::before{
 
 .hidden li {
   display: block;
-  margin: 20px auto;
-  padding:20px;
   border: thin solid #c3c3c3;
 }
 
@@ -159,11 +155,17 @@ li p::before{
   .design .hidden img {
     max-width: 600px;
   }
+  .hidden li {
+    padding:20px;
+    margin: 20px auto;
+  }
 }
 
 @media (max-width: 767px) {
   body {
     font-size: 12px;
+    width:90%;
+    margin: 0 auto;
   }
   ul.links li {
     width: 100%;
@@ -179,15 +181,15 @@ li p::before{
   .hidden h3, .hidden h4 {
     width: auto;
   }
-  .section {
-    padding: 0;
-  }
   .design .hidden img {
     width: 100%;
   }
   #fullpage {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .hidden li {
+    border-width: 0px;
   }
 }
 
@@ -208,6 +210,14 @@ a:hover h3 {
   border-bottom: 1px solid #444444;
 }
 
-a:hover li {
+a:hover li, p.contactLinks a:hover {
   background-color: #eeeeee;
+}
+
+p.contactLinks a {
+  padding: 10px;
+}
+
+#menu li a:hover {
+    border-bottom: 1px solid #444444;
 }
