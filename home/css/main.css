@@ -1,3 +1,28 @@
+.section {
+  padding:0px 10px;
+}
+
 h1 {
+  margin-top: 0;
+  padding-top:15px;
   font-weight: 100;
+}
+
+li img {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+li h3 {
+  display: inline-block;
+}
+
+li p::before{
+  content: "About this: ";
+}
+
+.hidden {
+  height: 200px;
+  overflow-y: scroll;
 }
