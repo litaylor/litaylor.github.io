@@ -1,0 +1,378 @@
+{
+  "schools": [
+    {
+      "name": "Appalachian State University",
+      "code": "asu",
+      "acceptRate": 0.68,
+      "gpa": {
+        "average": 4.17,
+        "breakdown": {
+          "min375": 0.87,
+          "min35": 0.08,
+          "min325": 0.03,
+          "min3": 0.03,
+          "min2.5": 0,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 510,
+          "max": 620
+        },
+        "math": {
+          "min": 520,
+          "max": 620
+        },
+        "writing": {
+          "min": 490,
+          "max": 590
+        }
+      },
+      "act": {
+        "min": 23,
+        "max": 27
+      }
+    },
+    {
+      "name": "East Carolina University",
+      "code": "ecu",
+      "acceptRate": 0.69,
+      "gpa": {
+        "average": 3.76,
+        "breakdown": {
+          "min375": 0.51,
+          "min35": 0.17,
+          "min325": 0.15,
+          "min3": 0.1,
+          "min2.5": 0.07,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 470,
+          "max": 550
+        },
+        "math": {
+          "min": 490,
+          "max": 560
+        },
+        "writing": {
+          "min": 450,
+          "max": 540
+        }
+      },
+      "act": {
+        "min": 20,
+        "max": 24
+      }
+    },
+    {
+      "name": "North Carolina A&T State University",
+      "code": "ncatsu",
+      "acceptRate": 0.66,
+      "gpa": {
+        "average": 3.13,
+        "breakdown": {
+          "min375": 0.13,
+          "min35": 0.11,
+          "min325": 0.14,
+          "min3": 0.2,
+          "min2.5": 0.34,
+          "min2": 0.08
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 390,
+          "max": 480
+        },
+        "math": {
+          "min": 410,
+          "max": 500
+        },
+        "writing": {
+          "min": 370,
+          "max": 460
+        }
+      },
+      "act": {
+        "min": 17,
+        "max": 21
+      }
+    },
+    {
+      "name": "North Carolina State University",
+      "code": "ncsu",
+      "acceptRate": 0.46,
+      "gpa": {
+        "average": 3.72,
+        "breakdown": {
+          "min375": 0.52,
+          "min35": 0.32,
+          "min325": 0.13,
+          "min3": 0.02,
+          "min2.5": 0,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 570,
+          "max": 660
+        },
+        "math": {
+          "min": 600,
+          "max": 690
+        },
+        "writing": {
+          "min": 540,
+          "max": 630
+        }
+      },
+      "act": {
+        "min": 27,
+        "max": 31
+      }
+    },
+    {
+      "name": "University of North Carolina at Asheville",
+      "code": "unca",
+      "acceptRate": 0.78,
+      "gpa": {
+        "average": 3.48,
+        "breakdown": {
+          "min375": 0.23,
+          "min35": 0.28,
+          "min325": 0.24,
+          "min3": 0.2,
+          "min2.5": 0.06,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 520,
+          "max": 640
+        },
+        "math": {
+          "min": 510,
+          "max": 610
+        },
+        "writing": {
+          "min": 490,
+          "max": 590
+        }
+      },
+      "act": {
+        "min": 23,
+        "max": 28
+      }
+    },
+    {
+      "name": "University of North Carolina at Chapel Hill",
+      "code": "uncch",
+      "acceptRate": 0.27,
+      "gpa": {
+        "average": 4.66,
+        "breakdown": {
+          "min375": 0.97,
+          "min35": 0.02,
+          "min325": 0,
+          "min3": 0,
+          "min2.5": 0,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 590,
+          "max": 700
+        },
+        "math": {
+          "min": 600,
+          "max": 710
+        },
+        "writing": {
+          "min": 580,
+          "max": 690
+        }
+      },
+      "act": {
+        "min": 27,
+        "max": 32
+      }
+    },
+    {
+      "name": "University of North Carolina at Charlotte",
+      "code": "uncc",
+      "acceptRate": 0.62,
+      "gpa": {
+        "average": 3.97,
+        "breakdown": {
+          "min375": 0.71,
+          "min35": 0.13,
+          "min325": 0.09,
+          "min3": 0.05,
+          "min2.5": 0.02,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 510,
+          "max": 590
+        },
+        "math": {
+          "min": 520,
+          "max": 610
+        },
+        "writing": {
+          "min": 490,
+          "max": 570
+        }
+      },
+      "act": {
+        "min": 22,
+        "max": 26
+      }
+    },
+    {
+      "name": "University of North Carolina at Greensboro",
+      "code": "uncg",
+      "acceptRate": 0.74,
+      "gpa": {
+        "average": 3.81,
+        "breakdown": {
+          "min375": 0.55,
+          "min35": 0.17,
+          "min325": 0.15,
+          "min3": 0.09,
+          "min2.5": 0.04,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 480,
+          "max": 570
+        },
+        "math": {
+          "min": 430,
+          "max": 530
+        },
+        "writing": {
+          "min": 440,
+          "max": 540
+        }
+      },
+      "act": {
+        "min": 21,
+        "max": 25
+      }
+    },
+    {
+      "name": "University of North Carolina at Pembroke",
+      "code": "uncp",
+      "acceptRate": 0.74,
+      "gpa": {
+        "average": 3.40,
+        "breakdown": {
+          "min375": 0.3,
+          "min35": 0.16,
+          "min325": 0.17,
+          "min3": 0.15,
+          "min2.5": 0.21,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 410,
+          "max": 490
+        },
+        "math": {
+          "min": 420,
+          "max": 500
+        },
+        "writing": {
+          "min": 390,
+          "max": 470
+        }
+      },
+      "act": {
+        "min": 18,
+        "max": 22
+      }
+    },
+    {
+      "name": "University of North Carolina at Wilmington",
+      "code": "uncw",
+      "acceptRate": 0.72,
+      "gpa": {
+        "average": 4.13,
+        "breakdown": {
+          "min375": 0.82,
+          "min35": 0.1,
+          "min325": 0.04,
+          "min3": 0.03,
+          "min2.5": 0.01,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 560,
+          "max": 630
+        },
+        "math": {
+          "min": 570,
+          "max": 630
+        },
+        "writing": {
+          "min": 520,
+          "max": 610
+        }
+      },
+      "act": {
+        "min": 22,
+        "max": 26
+      }
+    },
+    {
+      "name": "Western Carolina University",
+      "code": "wcu",
+      "acceptRate": 0.43,
+      "gpa": {
+        "average": 3.75,
+        "breakdown": {
+          "min375": 0.5,
+          "min35": 0.17,
+          "min325": 0.15,
+          "min3": 0.12,
+          "min2.5": 0.06,
+          "min2": 0
+        }
+      },
+      "sat": {
+        "reading": {
+          "min": 460,
+          "max": 560
+        },
+        "math": {
+          "min": 470,
+          "max": 560
+        },
+        "writing": {
+          "min": 430,
+          "max": 530
+        }
+      },
+      "act": {
+        "min": 20,
+        "max": 24
+      }
+    }
+  ]
+}

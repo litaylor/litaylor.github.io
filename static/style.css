@@ -1,0 +1,17 @@
+body {
+  font-family: Arial;
+  font-size: 16px;
+}
+
+p.header {
+  font-size: 150%;
+}
+@media (min-width:768px) {
+  .menu {
+    font-size: 150%;
+  }
+}
+
+.menu select, .menu input {
+  font-size: inherit;
+}
