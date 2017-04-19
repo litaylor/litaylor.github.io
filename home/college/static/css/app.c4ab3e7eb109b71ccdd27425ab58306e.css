@@ -1,0 +1,321 @@
+
+body {
+  margin: 0px;
+}
+#app {
+  font-family: 'Lato';
+  color: #644D52;
+}
+@media (max-width: 768px) {
+.slider {
+    width: 50%;
+}
+}
+@media (min-width: 768px) {
+.slider {
+    width: 240px;
+}
+}
+.fa {
+  cursor: pointer;
+}
+.menu {
+  display: inline;
+}
+.menu select, .menu input {
+  padding: 5px;
+  margin: 5px;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  border-color: #F77A52;
+  color: #F77A52;
+  font-weight: bold;
+}
+.description {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+}
+.description {
+  padding: 40px 0px;
+}
+
+#myHeader {
+  top:0px;
+  left:0px;
+  right: 0px;
+  background-color: #644D52;
+  color: white;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+.body {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+}
+@media (max-width: 835px) {
+#myHeader, #myFooter {
+    padding: 20px 10px;
+}
+}
+@media (min-width: 835px) {
+#myHeader, #myFooter {
+    padding:20px 20px 20px 0px;
+    text-align: center;
+}
+h1 {
+    display: inline-block;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-right: thin solid white;
+}
+h1:last-of-type {
+    border: none;
+}
+#myHeader h3 {
+    padding-left: 40px;
+}
+}
+
+#myFooter {
+  left:0px;
+  right: 0px;
+  background-color: #F77A52;;
+  color: white;
+  margin-top: 40px;
+  color: white;
+}
+#myFooter a:link, #myFooter a:hover, #myFooter a:active, #myFooter a:visited {
+  color: white;
+}
+
+#app {
+  text-align: center;
+}
+.schoolCategory {
+  display: inline-block;
+}
+.schoolCategory div {
+  cursor: pointer;
+}
+.schoolCategory div:hover p {
+  background-color: #F77A52;
+  color: white;
+}
+@media(min-width:992px) {
+.categoryWrap {
+    overflow: hidden;
+    width: 720px;
+    margin: 0 auto;
+}
+.schoolCategory {
+    box-sizing: border-box;
+    width:33%;
+    float:left;
+    border-left: thin solid #F77A52;
+    padding-bottom:500em;
+    margin-bottom:-500em;
+}
+.schoolCategory p.header {
+    margin-top:0px;
+}
+.schoolCategory:first-of-type{
+    border-left: none;
+}
+}
+@media(max-width:991px) {
+.schoolCategory {
+    width:100%;
+    box-sizing: border-box;
+}
+.schoolCategory p.header{
+    margin-top:60px;
+}
+}
+.schoolCategory p.header{
+  font-weight: bold;
+}
+.schoolCategory p{
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.description a:link, .description a:visited {
+  color: inherit;
+}
+.description a:hover, .description a:active {
+  color: #F77A52;
+}
+
+#graph {
+}
+.graphCanvas {
+  width:720px;
+  height: 240px;
+}
+rect.safety, rect.reach {
+  fill: #644D52;
+}
+rect.target {
+  fill: #F77A52;
+}
+rect:hover{
+  stroke-opacity:0.4;
+  stroke-width:3;
+  stroke-linejoin: round;
+}
+rect.target:hover{
+  stroke:#F77A52;
+}
+rect.safety:hover, rect.reach:hover{
+  stroke:#644D52;
+}
+.label {
+  font-size: 4px;
+  font-family: 'Lato';
+}
+.schoolLabel {
+  font-size: 5px;
+}
+.schoolLabel:hover {
+  font-weight: bold;
+}
+@media (max-width: 660px) {
+.label:not(.scoreLabel) {
+    transform: scale(0.65,1)
+}
+}
+.schoolLabel.target {
+  text-decoration: underline;
+  fill: #FF974F;
+}
+.scoreLine {
+  stroke: #644D52;
+  stroke-width: 0.5;
+  opacity: 0.8;
+}
+@media (max-width:767.9px) {
+.graphCanvas {
+    width:100%;
+}
+.maxLabel, .minLabel, .scoreLabel {
+    display: none
+}
+}
+.schoolLabel, rect.target, rect.safety, rect.reach {
+  cursor: pointer;
+}
+
+.fade {
+  position: fixed;
+  z-index: 900;
+  top:0px; bottom: 0px; left: 0px; right: 0px;
+  background-color: rgba(0,0,0,0.7);
+}
+.lightbox {
+  position: fixed;
+  z-index: 1000;
+  top:20%; bottom: 20%; left: 10px; right: 10px;
+  background-color: black;
+  background-color: #ffffff;
+  overflow-y: scroll;
+}
+.lightbox h1 {
+  padding: 20px 10px 10px;
+}
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+.scorePanel {
+  width: 40%;
+  float: left;
+}
+.centerPanel {
+  width: 20%;
+  float: left;
+}
+.scorePanel h3 {
+  /*width: 200px;*/
+  text-align: center;
+}
+.scoreSection {
+  float: left;
+}
+@media (min-width: 601px) {
+.testScores {
+    width: 70%;
+}
+.gpaScores {
+    width:30%;
+}
+}
+.scoresWrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+.testScores {
+    display: block;
+    width: 100%;
+}
+.gpaScores {
+    display: block;
+    width:100%;
+}
+}
+.fa-window-close {
+  position: fixed;
+  top: 21%;
+  right: 30px;
+  font-size: 40px;
+  z-index: 2000;
+}
+.lightbox span {
+  display: inline-block;
+  text-align: center;
+}
+.gradeHeader {
+  width: 100px;
+}
+.gradeNumber {
+  width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*# sourceMappingURL=app.c4ab3e7eb109b71ccdd27425ab58306e.css.map*/
